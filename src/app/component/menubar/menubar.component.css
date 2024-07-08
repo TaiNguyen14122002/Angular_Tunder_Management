@@ -1,0 +1,8 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  /* app.component.css */
+.active {
+  background-color: #1976d2; /* Thay đổi thành màu bạn muốn */
+  color: white;
+}

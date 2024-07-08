@@ -1,0 +1,36 @@
+<div mat-dialog-title>
+    <h1>Chi tiết quá trình thực hiện đào tạo</h1>
+</div>
+<div mat-dialog-content class="content">
+    <div class="row">
+        <div class="column">
+            
+            <div class="detail-row">
+                <div class="title">Sản phẩm CNTT:</div>
+                <div class="value">{{data.SanPhamCNTT}}</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="title">Mô tả:</div>
+                <div class="value">{{ data.MoTa }}</div>
+            </div>
+
+
+
+            <div class="detail-row">
+                <div class="title">Thời gian đào tạo:</div>
+                <div class="value">{{ data.TuNgay | date : "dd/MM/yyyy" }} - {{ data.DenNgay | date : "dd/MM/yyyy" }}
+                </div>
+            </div>
+
+
+        </div>
+
+
+        
+    </div>
+</div>
+<div mat-dialog-actions class="action">
+    <button mat-raised-button (click)="closeModal()">Hủy</button>
+    <!-- <button mat-raised-button color="primary" cdkFocusInitial>Lưu</button> -->
+</div>

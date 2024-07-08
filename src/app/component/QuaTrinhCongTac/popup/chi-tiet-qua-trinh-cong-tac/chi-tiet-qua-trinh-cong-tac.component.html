@@ -1,0 +1,113 @@
+<div mat-dialog-title>
+    <h1>Chi tiết quá trình thực hiện đào tạo</h1>
+</div>
+<div mat-dialog-content class="content">
+    <div class="row">
+        <div class="column">
+            <div class="detail-row">
+                <div class="title">Đơn vị:</div>
+                <div class="value">{{ data.DonVi }}</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="title">Tên nhân sự:</div>
+                <div class="value">{{data.TenNhanVien}}</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="title">Chức danh:</div>
+                <div class="value">{{ data.ChucDanh }}</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="title">Khoá đào tạo:</div>
+                <div class="value">{{ data.KhoaDaoTao }}</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="title">Hình thức tổ chức:</div>
+                <div class="value">{{ data.DonViToChuc }}</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="title">Đơn vị đào tạo:</div>
+                <div class="value">{{ data.DonViDaoTao }}</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="title">Điểm số:</div>
+                <div class="value">{{ data.DiemSo }}</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="title">Kết quả khoá đào tạo:</div>
+                <div class="value">{{ data.KetQuaKhoaDaoTao }}</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="title">Được cấp chứng chỉ:</div>
+                <div class="value">
+                    <input type="checkbox" disabled [checked]="data.DuocCapChungChi" />
+                </div>
+            </div>
+
+        </div>
+
+
+        <span style="border: 0.5px solid #ccc"></span>
+
+
+        <div class="column">
+            <div class="detail-row">
+                <div class="title">Chi phí đào tạo:</div>
+                <div class="value">{{ data.ChiPhiDaoTao }}</div>
+            </div>
+            <div class="detail-row">
+                <div class="title">Thời gian cam kết(tháng):</div>
+                <div class="value">{{ thoiGianCamKet }}</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="title">Trang thái:</div>
+                <div class="value">{{ data.TrangThai }}</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="title">Kí hợp đồng đào tạo:</div>
+                <div class="value">
+                    <input type="checkbox" disabled [checked]="data.KiHopDongDaoTao" />
+                </div>
+            </div>
+
+
+            <div class="detail-row">
+                <div class="title">Nội dung cam kết</div>
+                <div class="value">{{ data.NoiDungCamKet }}</div>
+            </div>
+            
+
+
+            <div class="detail-row">
+                <div class="title">Thời gian đào tạo:</div>
+                <div class="value">{{ data.TuNgay | date : "dd/MM/yyyy" }} - {{ data.DenNgay | date : "dd/MM/yyyy" }}
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="title">Kết quả các môn:</div>
+                <div class="value">{{ data.KetQuaCacMon }}</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="title">Thời gian cam kết còn lại(Ngày):</div>
+                <div class="value">{{ thoiGianConLaiNgay }}</div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions class="action">
+    <button mat-raised-button (click)="closeModal()">Hủy</button>
+    <!-- <button mat-raised-button color="primary" cdkFocusInitial>Lưu</button> -->
+</div>

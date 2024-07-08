@@ -1,0 +1,46 @@
+
+.content{
+    min-width: 900px;
+    padding-top: 12px;
+    border-top: 0.5px solid #ccc;
+    border-bottom: 0.5px solid #ccc;
+}
+
+.row{
+    display: flex;
+    gap: 34px;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    width: 100%;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+
+.title {
+    font-weight: bold;
+    min-width: 120px;
+}
+
+.value {
+    margin-left: 16px;
+}
+
+.action{
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin: 12px 0 12px;
+}
+
+.action button{
+    width: 100px;
+}
+

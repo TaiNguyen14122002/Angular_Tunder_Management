@@ -1,0 +1,54 @@
+<div mat-dialog-title>
+    <h1>Chi tiết quá trình thực hiện đào tạo</h1>
+</div>
+<div mat-dialog-content class="content">
+    <div class="row">
+        <div class="column">
+            <div class="detail-row">
+                <div class="title">Tên khoá đào tạo/ chứng chỉ:</div>
+                <div class="value">{{ data.TenKhoaDaoTao }}</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="title">Hình thức tổ chức:</div>
+                <div class="value">{{data.HinhThucToChuc}}</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="title">Đơn vị nội bộ đào tạo:</div>
+                <div class="value">{{ data.DonViDaoTaoNoiBo }}</div>
+            </div>
+
+        </div>
+
+
+        <span style="border: 0.5px solid #ccc"></span>
+
+
+        <div class="column">
+            <div class="detail-row">
+                <div class="title">Dơn vị bên ngoài đào tạo:</div>
+                <div class="value">{{ data.DonViDaoTaoBenNgoai }}</div>
+            </div>
+            
+
+            <div class="detail-row">
+                <div class="title">Dự án đào tạo:</div>
+                <div class="value">{{ data.DuAnDaoTao }}</div>
+            </div>
+
+
+            <div class="detail-row">
+                <div class="title">Thời gian đào tạo:</div>
+                <div class="value">{{ data.TuNgay | date : "dd/MM/yyyy" }} - {{ data.DenNgay | date : "dd/MM/yyyy" }}
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions class="action">
+    <button mat-raised-button (click)="closeModal()">Hủy</button>
+    <!-- <button mat-raised-button color="primary" cdkFocusInitial>Lưu</button> -->
+</div>

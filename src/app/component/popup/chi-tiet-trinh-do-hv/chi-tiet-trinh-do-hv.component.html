@@ -1,0 +1,85 @@
+<div mat-dialog-title>
+    <h1>Chi tiết trình độ học vấn</h1>
+  </div>
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <div class="column">
+        <div class="detail-row">
+          <div class="title">Nhân viên:</div>
+          <div class="value">Nguyễn Hữu Nhân</div>
+        </div>
+        <div class="detail-row">
+          <div class="title">Trình độ đào tạo:</div>
+          <div class="value">{{ data.TrinhDoDaoTao }}</div>
+        </div>
+        <div class="detail-row">
+          <div class="title">Cơ sở đào tạo:</div>
+          <div class="value">{{ data.CoSoDaoTao }}</div>
+        </div>
+        <div class="detail-row">
+          <div class="title">Hình thức đào tạo:</div>
+          <div class="value">{{ data.HinhThucDaoTao }}</div>
+        </div>
+        <div class="detail-row">
+          <div class="title">Thời gian học:</div>
+          <div class="value">{{ data.TuNgay | date : "dd/MM/yyyy" }}</div>
+        </div>
+        <div class="detail-row">
+          <div class="title">Ngày cấp bằng:</div>
+          <div class="value">{{ data.DenNgay | date : "dd/MM/yyyy" }}</div>
+        </div>
+        <div class="detail-row">
+          <div class="title">File đính kèm:</div>
+          <div class="value">
+            <a href="" style="text-decoration: none; color: blue">{{
+              data.FileDinhKem
+            }}</a>
+          </div>
+        </div>
+      </div>
+      <span style="border: 0.5px solid #ccc"></span>
+      <div class="column">
+        <div class="detail-row">
+          <div class="title">Loại đào tạo:</div>
+          <div class="value">{{ data.LoaiDaoTao }}</div>
+        </div>
+        <div class="detail-row">
+          <div class="title">Chuyên ngành đào tạo:</div>
+          <div class="value">{{ data.ChuyenNganhDaoTao }}</div>
+        </div>
+        <div class="detail-row">
+          <div class="title">Ngành đào tạo:</div>
+          <div class="value">{{ data.NganhDaoTao }}</div>
+        </div>
+        <div class="detail-row">
+          <div class="title">Xếp loại tốt nghiệp:</div>
+          <div class="value">{{ data.XepLoaiTotNghiep }}</div>
+        </div>
+        <div class="detail-row">
+          <div class="title">Danh hiệu đào tạo:</div>
+          <div class="value">{{ data.DanhHieuDaoTao }}</div>
+        </div>
+        <div class="detail-row">
+          <div class="title">Trình độ học vấn ưu tiên:</div>
+          <div class="value">
+            <input
+              type="checkbox"
+              disabled
+              [checked]="data.TrinhDoHocVanUuTien"
+            />
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="title">Cử đi học:</div>
+          <div class="value">
+            <input type="checkbox" disabled [checked]="data.CuDiHoc" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button (click)="closeModal()">Hủy</button>
+    <!-- <button mat-raised-button color="primary" cdkFocusInitial>Lưu</button> -->
+  </div>
+  

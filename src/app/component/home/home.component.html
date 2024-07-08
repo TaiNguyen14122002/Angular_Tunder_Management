@@ -1,0 +1,55 @@
+<mat-tab-group>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon routerLink="table" mat-button [ngClass]="{'active': activeButton === 'education'}" (click)="setActive('education')" class="example-tab-icon">table </mat-icon>
+             Trình độ học vấn
+        </ng-template>
+        <app-table></app-table>
+    </mat-tab>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">explore</mat-icon>
+            Chứng chỉ, chứng nhận
+        </ng-template>
+        <app-table-chung-nhan></app-table-chung-nhan>
+    </mat-tab>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">analytics</mat-icon>
+            Quá trình công tác
+        </ng-template>
+        
+        <app-table-qua-trinh-cong-tac></app-table-qua-trinh-cong-tac>
+    </mat-tab>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">settings</mat-icon>
+            Quá trình tham gia dự án
+        </ng-template>
+
+        <app-tham-gia-du-an></app-tham-gia-du-an>
+    </mat-tab>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">help</mat-icon>
+            Quá trình đào tạo nội bộ
+        </ng-template>
+
+        <app-table-dao-tao-noi-bo></app-table-dao-tao-noi-bo>
+    </mat-tab>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">info</mat-icon>
+            Thông tin cá nhân
+        </ng-template>
+
+        <app-info-detail></app-info-detail>
+
+        
+    </mat-tab>
+</mat-tab-group>

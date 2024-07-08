@@ -1,0 +1,23 @@
+
+    <h1 mat-dialog-title>{{inputdata.title}}</h1>
+    <div mat-dialog-content>
+      <!-- <h4>Từ ngày: <b>{{custdata?.TuNgay | date: 'dd/MM/yyyy'}}</b></h4>
+      <h4>Đến ngày : <b>{{custdata?.DenNgay | date: 'dd/MM/yyyy'}}</b></h4>
+      <h4>Trình độ đào tạo : <b>{{custdata?.TrinhDoDaoTao}}</b></h4>
+      <h4>Chuyên ngành đào tạo : <b>{{custdata?.ChuyenNganhDaoTao}}</b></h4>
+      <h4>Ngành đào tạo : <b>{{custdata?.NganhDaoTao}}</b></h4>
+      <h4>Hình thức đào tạo : <b>{{custdata?.HinhThucDaoTao}}</b></h4>
+      <h4>Cơ sở đào tạo : <b>{{custdata?.CoSoDaoTao}}</b></h4> -->
+
+      <h4>Từ ngày: <b>{{01/01/2023 | date: 'dd/MM/yyyy'}}</b></h4>
+      <h4>Đến ngày : <b>{{31/12/2023 | date: 'dd/MM/yyyy'}}</b></h4>
+      <h4>Trình độ đào tạo : <b>Đại học</b></h4>
+      <h4>Chuyên ngành đào tạo : <b>Công nghệ thông tin</b></h4>
+      <h4>Ngành đào tạo : <b>Công nghệ thông tin</b></h4>
+      <h4>Hình thức đào tạo : <b>Chính quy</b></h4>
+      <h4>Cơ sở đào tạo : <b>Đại học Thủ Dầu Một</b></h4>
+    </div>
+    <div mat-dialog-actions>
+      <button (click)="closepopup()" mat-raised-button color="warn">Close</button>
+      <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
+    </div>

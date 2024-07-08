@@ -1,0 +1,127 @@
+
+<form [formGroup]="empForm" (ngSubmit)="onFromSubmit()" >
+    <h1 mat-dialog-title>Cập nhập quá trình công tác</h1>
+  
+    <div mat-dialog-content>
+        
+            <mat-form-field class="example-full-width">
+              <mat-label>Tên nhân sự</mat-label>
+              <input matInput #message maxlength="256" formControlName="TenNhanVien"  placeholder="Nhập tên nhân viên ...">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Mô tả</mat-label>
+              <input matInput #message maxlength="256" formControlName="MoTa"  placeholder="Mô tả ...">
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Trong ngành</mat-label>
+              <select matNativeControl required formControlName="TrongNganh">
+                <option value="True">Trong ngành</option>
+              </select>
+            </mat-form-field>
+          
+
+         
+            <mat-form-field class="example-full-width">
+              <mat-label>Đơn vị</mat-label>
+              <input matInput #message maxlength="256" formControlName="DonVi"  placeholder="Đơn vị ...">
+            </mat-form-field>
+            
+            <mat-form-field class="example-full-width">
+                <mat-label>Chức danh</mat-label>
+                <input matInput #message maxlength="256" formControlName="ChucDanh"  placeholder="Chức danh ...">
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Khoá đào tạo</mat-label>
+                <input matInput #message maxlength="256" formControlName="KhoaDaoTao"  placeholder="Khoá đào tạo ...">
+              </mat-form-field>
+
+              
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Hình thức tổ chức</mat-label>
+                <input matInput #message maxlength="256" formControlName="DonViToChuc"  placeholder="Hình thức tổ chức ...">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Đơn vị đào tạo</mat-label>
+                <select matNativeControl required formControlName="DonViDaoTao">
+                  <option value="Tập đoàn VNPT">Tập đoàn VNPT</option>
+                </select>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Điểm số</mat-label>
+                <input matInput #message maxlength="256" formControlName="DiemSo" type="number"  placeholder="Điểm số ...">
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Kết quả khoá đào tạo</mat-label>
+                <input matInput #message maxlength="256" formControlName="KetQuaKhoaDaoTao"  placeholder="Kết quả khoá đào tạo ...">
+              </mat-form-field>
+
+              <section class="example-section">
+                <mat-checkbox class="example-margin" formControlName="DuocCapChungChi">Được cấp chức chỉ</mat-checkbox>
+              </section>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Chi phí đào tạo</mat-label>
+                <input matInput #message maxlength="256" formControlName="ChiPhiDaoTao" type="number"  placeholder="Chi phí đào tạo ...">
+              </mat-form-field>
+              
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Trạng thái</mat-label>
+                <input matInput #message maxlength="256" formControlName="TrangThai"  placeholder="Trang thái ...">
+              </mat-form-field>
+
+              <section class="example-section">
+                <mat-checkbox class="example-margin" formControlName="KiHopDongDaoTao">Kí hợp đồng đào tạo</mat-checkbox>
+              </section>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Kết quả các môn</mat-label>
+                <input matInput #message maxlength="256" formControlName="KetQuaKhoaDaoTao"  placeholder="Kết quả các mông ...">
+              </mat-form-field>
+ 
+      <mat-form-field class="example-form-field">
+        <mat-label>Thời gian đào tạo(Từ ngày)*</mat-label>
+        <input matInput [matDatepicker]="startDatePicker" formControlName="TuNgay" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #startDatePicker>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Trở về</button>
+            <button mat-raised-button matDatepickerApply>Chọn</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+  
+      <mat-form-field class="example-form-field">
+        <mat-label>Thời gian đào tạo(Đến ngày)*</mat-label>
+        <input matInput [matDatepicker]="endDatePicker" formControlName="DenNgay" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Trở về</button>
+            <button mat-raised-button matDatepickerApply>Chọn</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+<!--       
+      <div>
+        <input type="file" formControlName="FileDinhKem" (change)="onFileSelect($event)" accept=".pdf"/>
+      </div> -->
+
+  
+    </div>
+  
+    <div mat-dialog-actions>
+      <button mat-raised-button type="submit" color="primary" >Cập nhập</button>
+      <a (click)="closepopup()" mat-raised-button color="warn" [mat-dialog-close]="false" type="button">Trở lại</a>
+      <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
+    </div>
+  </form>

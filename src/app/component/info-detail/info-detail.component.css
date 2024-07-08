@@ -1,0 +1,56 @@
+.wrapper{
+    margin: 34px;
+}
+
+.container{
+    padding: 24px;
+    background-color: #fff;    
+    border-radius: 6px;
+}
+
+.header-info{
+    display: flex;
+    align-items: center;
+}
+
+.img-avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+.info{
+    margin-left: 12px;
+    display: flex;
+    flex-direction: column;
+}
+.info-name{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.info-email{
+    margin-top: 8px;
+    color: #666;
+}
+
+.content-info{
+    padding-top: 24px;
+    font-size: 16px;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 0.5px solid #ccc;
+}
+
+.column{
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}

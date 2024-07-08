@@ -1,0 +1,494 @@
+{
+  "customer": [
+    {
+      "id": "1",
+      "name": "Janesh",
+      "phone": "8989787867",
+      "email": "janesh@in.com",
+      "status": "Active"
+    },
+    {
+      "id": "2",
+      "name": "Bishoi",
+      "phone": "8989787867",
+      "email": "bishoi@in.com",
+      "status": "In Active"
+    },
+    {
+      "id": "3",
+      "name": "surya",
+      "phone": "8989787867",
+      "email": "surya@in.com",
+      "status": "In Active"
+    },
+    {
+      "id": "4",
+      "name": "kamlesh",
+      "phone": "8989787867",
+      "email": "kamlesh@in.com",
+      "status": "IN Active"
+    },
+    {
+      "id": "5",
+      "name": "Kriti shetty",
+      "phone": "8989787867",
+      "email": "kriti@in.com",
+      "status": "Active"
+    },
+    {
+      "id": "6",
+      "name": "Tammanah",
+      "phone": "8989787867",
+      "email": "tam@in.com"
+    },
+    {
+      "id": "7",
+      "name": "Priyanka Mohan",
+      "phone": "8989787867",
+      "email": "priya@in.com",
+      "status": "Active"
+    },
+    {
+      "id": "8",
+      "name": "rashmika",
+      "phone": "8989787867",
+      "email": "rashmika@in.com",
+      "status": "Active"
+    },
+    {
+      "id": "9",
+      "name": "Trisha",
+      "phone": "8989787867",
+      "email": "trisha@in.com",
+      "status": "Active"
+    },
+    {
+      "id": "10",
+      "name": "samanta",
+      "phone": "8989787867",
+      "email": "samantha@in.com",
+      "status": "Active"
+    },
+    {
+      "id": "11",
+      "name": "ananthi",
+      "phone": "8989787867",
+      "email": "ananthi@in.com",
+      "status": "Active"
+    },
+    {
+      "name": "Ravi Kumar",
+      "email": "rn@in.com",
+      "phone": "7899000",
+      "status": true,
+      "id": "12"
+    },
+    {
+      "name": "User",
+      "email": "user@in.com",
+      "phone": "777",
+      "status": true,
+      "id": "13"
+    },
+    {
+      "name": "Janesh",
+      "email": "janesh@in.com",
+      "phone": "8989787867",
+      "status": "Active",
+      "id": "14"
+    },
+    {
+      "name": "kamlesh",
+      "email": "kamlesh@in.com",
+      "phone": "8989787867",
+      "status": "IN Active",
+      "id": "15"
+    },
+    {
+      "name": "kamlesh",
+      "email": "kamlesh@in.com",
+      "phone": "8989787867",
+      "status": "IN Active",
+      "id": "16"
+    },
+    {
+      "name": "",
+      "email": "",
+      "phone": "",
+      "status": true,
+      "id": "17"
+    },
+    {
+      "name": "Bishoi",
+      "email": "bishoi@in.com",
+      "phone": "8989787867",
+      "status": "In Active",
+      "id": "18"
+    },
+    {
+      "name": "",
+      "email": "",
+      "phone": "",
+      "status": true,
+      "id": "19"
+    },
+    {
+      "name": "Janesh",
+      "email": "janesh@in.com",
+      "phone": "8989787867",
+      "status": "Active",
+      "id": "20"
+    },
+    {
+      "name": "",
+      "email": "",
+      "phone": "",
+      "status": true,
+      "id": "21"
+    },
+    {
+      "name": "Bishoi",
+      "email": "bishoi@in.com",
+      "phone": "8989787867",
+      "status": "In Active",
+      "id": "22"
+    },
+    {
+      "name": "Janesh",
+      "email": "janesh@in.com",
+      "phone": "8989787867",
+      "status": "Active",
+      "id": "23"
+    },
+    {
+      "name": "Janesh",
+      "email": "janesh@in.com",
+      "phone": "8989787867",
+      "status": "Active",
+      "id": "24"
+    },
+    {
+      "name": "Janesh",
+      "email": "janesh@in.com",
+      "phone": "8989787867",
+      "status": "Active",
+      "id": "25"
+    },
+    {
+      "name": "Janesh",
+      "email": "janesh@in.com",
+      "phone": "8989787867",
+      "status": "Active",
+      "id": "26"
+    },
+    {
+      "name": "surya",
+      "email": "surya@in.com",
+      "phone": "8989787867",
+      "status": true,
+      "id": "27"
+    },
+    {
+      "name": "Janesh",
+      "email": "janesh@in.com",
+      "phone": "8989787867",
+      "status": "Active",
+      "id": "28"
+    }
+  ],
+  "associate": [
+    {
+      "id": "1",
+      "name": "Ravi",
+      "address": [
+        {
+          "title": "Address1",
+          "country": "India",
+          "fulladdress": "1st street,new nager,\nchennai"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Kumar",
+      "address": [
+        {
+          "title": "kUmar address1",
+          "country": "Australia",
+          "fulladdress": "Address 1"
+        },
+        {
+          "title": "2",
+          "country": "England",
+          "fulladdress": "Add 2"
+        },
+        {
+          "title": "3",
+          "country": "England",
+          "fulladdress": ""
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Akash",
+      "address": []
+    }
+  ],
+  "country": [
+    {
+      "code": "India",
+      "name": "India",
+      "id": "1967"
+    },
+    {
+      "code": "Australia",
+      "name": "Australia",
+      "id": "bdc5"
+    },
+    {
+      "code": "SouthAfrica",
+      "name": "SouthAfrica",
+      "id": "a0e4"
+    },
+    {
+      "code": "England",
+      "name": "England",
+      "id": "6bff"
+    }
+  ],
+  "TrinhDoHocVan": [
+    {
+      "id": "1",
+      "TuNgay": "2024-06-30T17:00:00.000Z",
+      "DenNgay": "2024-07-26T17:00:00.000Z",
+      "TrinhDoDaoTao": "Đại học",
+      "ChuyenNganhDaoTao": "Công nghệ thông tin",
+      "NganhDaoTao": "Công nghệ thông tin",
+      "HinhThucDaoTao": "Chính Quy",
+      "CoSoDaoTao": "Đại học Thủ Dầu Một",
+      "fileBase64": "C:\\fakepath\\Dev_Nguyen_Phu_An.pdf",
+      "action": -1
+    },
+    {
+      "id": "2",
+      "TuNgay": "2024-07-02T17:00:00.000Z",
+      "DenNgay": "2024-07-11T17:00:00.000Z",
+      "TrinhDoDaoTao": "Đại học",
+      "ChuyenNganhDaoTao": "Công nghệ thông tin",
+      "NganhDaoTao": "Công nghệ thông tin",
+      "HinhThucDaoTao": "Chính Quy",
+      "CoSoDaoTao": "Đại học Thủ Dầu Một",
+      "fileBase64": "C:\\fakepath\\CV - Nguyen Phuong Nam -Intern Deverloper.pdf",
+      "action": -1
+    },
+    {
+      "TuNgay": "2024-07-05T17:00:00.000Z",
+      "DenNgay": "2024-07-05T17:00:00.000Z",
+      "TrinhDoDaoTao": "Đại học",
+      "ChuyenNganhDaoTao": "Công nghệ thông tin",
+      "NganhDaoTao": "Công nghệ thông tin",
+      "HinhThucDaoTao": "Chính Quy",
+      "CoSoDaoTao": "Đại học Thủ Dầu Một",
+      "fileBase64": "C:\\fakepath\\CV - Nguyen Phuong Nam -Intern Deverloper.pdf",
+      "action": -1,
+      "id": "3"
+    },
+    {
+      "id": "4",
+      "TuNgay": "2024-07-10T17:00:00.000Z",
+      "DenNgay": "2024-07-25T17:00:00.000Z",
+      "TrinhDoDaoTao": "Đại học",
+      "ChuyenNganhDaoTao": "Công nghệ thông tin",
+      "NganhDaoTao": "Công nghệ thông tin",
+      "HinhThucDaoTao": "Chính Quy",
+      "CoSoDaoTao": "Đại học Thủ Dầu Một",
+      "fileBase64": "C:\\fakepath\\CV - Nguyen Phuong Nam -Intern Deverloper.pdf",
+      "action": 1
+    },
+    {
+      "id": "5",
+      "TuNgay": "2024-07-04T17:00:00.000Z",
+      "DenNgay": "2024-07-05T17:00:00.000Z",
+      "TrinhDoDaoTao": "Đại học",
+      "ChuyenNganhDaoTao": "Công nghệ thông tin",
+      "NganhDaoTao": "Công nghệ thông tin",
+      "HinhThucDaoTao": "Chính Quy",
+      "CoSoDaoTao": "Đại học Thủ Dầu Một",
+      "fileBase64": "C:\\fakepath\\CV - Nguyen Phuong Nam -Intern Deverloper.pdf",
+      "action": 1
+    },
+    {
+      "id": "6",
+      "TuNgay": "2024-07-04T17:00:00.000Z",
+      "DenNgay": "2024-07-05T17:00:00.000Z",
+      "TrinhDoDaoTao": "Đại học",
+      "ChuyenNganhDaoTao": "Công nghệ thông tin",
+      "NganhDaoTao": "Công nghệ thông tin",
+      "HinhThucDaoTao": "Chính Quy",
+      "CoSoDaoTao": "Đại học Thủ Dầu Một",
+      "fileBase64": "C:\\fakepath\\CV - Nguyen Phuong Nam -Intern Deverloper.pdf",
+      "action": 1
+    },
+    {
+      "id": "7",
+      "TuNgay": "2024-07-04T17:00:00.000Z",
+      "DenNgay": "2024-07-05T17:00:00.000Z",
+      "TrinhDoDaoTao": "Đại học",
+      "ChuyenNganhDaoTao": "Công nghệ thông tin",
+      "NganhDaoTao": "Công nghệ thông tin",
+      "HinhThucDaoTao": "Chính Quy",
+      "CoSoDaoTao": "Đại học Thủ Dầu Một",
+      "fileBase64": "C:\\fakepath\\CV - Nguyen Phuong Nam -Intern Deverloper.pdf",
+      "action": -1
+    },
+    {
+      "id": "8",
+      "TuNgay": "2024-07-02T17:00:00.000Z",
+      "DenNgay": "2024-07-05T17:00:00.000Z",
+      "TrinhDoDaoTao": "Đại học",
+      "ChuyenNganhDaoTao": "Công nghệ thông tin",
+      "NganhDaoTao": "Công nghệ thông tin",
+      "HinhThucDaoTao": "Chính Quy",
+      "CoSoDaoTao": "Đại học Thủ Dầu Một",
+      "fileBase64": "C:\\fakepath\\CV - Nguyen Phuong Nam -Intern Deverloper.pdf",
+      "action": 1
+    },
+    {
+      "id": "9",
+      "TuNgay": "2024-07-02T17:00:00.000Z",
+      "DenNgay": "2024-07-12T17:00:00.000Z",
+      "TrinhDoDaoTao": "Đại học",
+      "ChuyenNganhDaoTao": "Công nghệ thông tin",
+      "NganhDaoTao": "Công nghệ thông tin",
+      "HinhThucDaoTao": "Chính Quy",
+      "CoSoDaoTao": "Đại học Thủ Dầu Một",
+      "fileBase64": "C:\\fakepath\\CV - Nguyen Phuong Nam -Intern Deverloper.pdf",
+      "action": -1
+    },
+    {
+      "id": "3",
+      "TuNgay": "2024-07-05T17:00:00.000Z",
+      "DenNgay": "2024-07-05T17:00:00.000Z",
+      "TrinhDoDaoTao": "Đại học",
+      "ChuyenNganhDaoTao": "Công nghệ thông tin",
+      "NganhDaoTao": "Công nghệ thông tin",
+      "HinhThucDaoTao": "Chính Quy",
+      "CoSoDaoTao": "Đại học Thủ Dầu Một",
+      "fileBase64": "C:\\fakepath\\CV - Nguyen Phuong Nam -Intern Deverloper.pdf",
+      "action": 1
+    },
+    {
+      "id": "10",
+      "TuNgay": "2024-07-30T17:00:00.000Z",
+      "DenNgay": "2024-07-12T17:00:00.000Z",
+      "TrinhDoDaoTao": "Đại học",
+      "ChuyenNganhDaoTao": "Công nghệ thông tin",
+      "NganhDaoTao": "Công nghệ thông tin",
+      "HinhThucDaoTao": "Chính Quy",
+      "CoSoDaoTao": "Đại học Thủ Dầu Một",
+      "fileBase64": "C:\\fakepath\\THÔNG-TIN-TUYỂN-DỤNG-Java.pdf",
+      "action": 1
+    },
+    {
+      "id": "11",
+      "TuNgay": "2024-07-23T17:00:00.000Z",
+      "DenNgay": "2024-07-07T17:00:00.000Z",
+      "TrinhDoDaoTao": "Đại học",
+      "ChuyenNganhDaoTao": "Công nghệ thông tin",
+      "NganhDaoTao": "Công nghệ thông tin",
+      "HinhThucDaoTao": "Chính Quy",
+      "CoSoDaoTao": "Đại học Thủ Dầu Một",
+      "fileBase64": "C:\\fakepath\\THÔNG-TIN-TUYỂN-DỤNG-Java.pdf",
+      "action": 1
+    }
+  ],
+  "ChungNhanChungChi": [
+    {
+      "id": "12",
+      "TenNhanVien": "wefwe",
+      "VanBangChungChi": "Bồi dưỡng kiến thức cơ bản công nghệ mới theo chiến lược VNPT4.0",
+      "LoaiChungChi": "Kỹ năng mềm",
+      "LinhVucChungChi": "Kỹ năng mềm",
+      "ChungChiQuocTe": true,
+      "MucChungChi": "Giỏi",
+      "FileDinhKem": null,
+      "CoSoDaoTao": "wefwef",
+      "DiaDiemDaoTao": "Elearning",
+      "CuDiHoc": true,
+      "Diem": 23423,
+      "KetQuaXepLoai": "Giỏi",
+      "TuNgay": "2024-07-26T17:00:00.000Z",
+      "DenNgay": "2024-07-25T17:00:00.000Z",
+      "NgayCapChungChi": "2024-07-26T17:00:00.000Z",
+      "action": -1
+    },
+    {
+      "id": "13",
+      "TenNhanVien": "Nguyễn Văn Tài",
+      "VanBangChungChi": "Bồi dưỡng kiến thức cơ bản công nghệ mới theo chiến lượn VNPT4.0",
+      "LoaiChungChi": "Kỹ năng mềm",
+      "LinhVucChungChi": "Kỹ năng mềm",
+      "ChungChiQuocTe": true,
+      "MucChungChi": "Giỏi",
+      "FileDinhKem": "C:\\fakepath\\THÔNG-TIN-TUYỂN-DỤNG-Java.pdf",
+      "CoSoDaoTao": "Trung tâm bồi dưỡng nghiệp vụ III",
+      "DiaDiemDaoTao": "Elearning",
+      "CuDiHoc": true,
+      "Diem": 8.5,
+      "KetQuaXepLoai": "Giỏi",
+      "TuNgay": "2023-12-19T17:00:00.000Z",
+      "DenNgay": "2024-12-18T17:00:00.000Z",
+      "NgayCapChungChi": "2023-12-19T17:00:00.000Z",
+      "action": 1
+    }
+  ],
+  "QuaTrinhCongTac": [
+    {
+      "id": "6",
+      "TenNhanVien": "CTV081220 - Nguyễn Bảo Tam",
+      "DonVi": "Viễn thông Bình Dương/ Trung tâm Công nghệ thông tin/ Phòng giải pháp 2",
+      "ChucDanh": "VT_CNTT_11_CTV - Nhân viên giải pháp CNTT",
+      "KhoaDaoTao": "VNPT/CNTT/A.07/426 - Đánh giá nhận thức An toàn thông tin người dùng cuối - Quý 2/2023",
+      "HinhThucToChuc": "",
+      "DonViToChuc": "Đào tạo tập trung do Tập đoàn thực hiện",
+      "DonViDaoTao": "Tập đoàn VNPT",
+      "DiemSo": 0,
+      "KetQuaKhoaDaoTao": "",
+      "DuocCapChungChi": false,
+      "TrongNganh": "True",
+      "ChiPhiDaoTao": 0,
+      "TrangThai": "Dự thảo",
+      "KiHopDongDaoTao": false,
+      "NoiDungCamKet": "",
+      "TuNgay": "2023-05-31T17:00:00.000Z",
+      "DenNgay": "2023-06-29T17:00:00.000Z",
+      "KetQuaCacMon": "",
+      "MoTa": "Tạo mới hợp đồng",
+      "action": 1
+    }
+  ],
+  "QuaTrinhThamGiaDuAn": [
+    {
+      "id": "14",
+      "TuNgay": "2024-07-24T17:00:00.000Z",
+      "DenNgay": "2024-07-29T17:00:00.000Z",
+      "SanPhamCNTT": "Iotiot",
+      "MoTa": "internet of things",
+      "action": 1
+    }
+  ],
+  "QuaTrinhDaoTaoNoiBo": [
+    {
+      "id": "15",
+      "TuNgay": "2024-07-02T17:00:00.000Z",
+      "DenNgay": "2024-07-29T17:00:00.000Z",
+      "TenKhoaDaoTao": "tai",
+      "HinhThucToChuc": "online",
+      "DonViDaoTaoNoiBo": "Tập đoàn VNPT",
+      "DonViDaoTaoBenNgoai": "",
+      "DuAnDaoTao": "iott",
+      "action": 1
+    }
+  ]
+}
