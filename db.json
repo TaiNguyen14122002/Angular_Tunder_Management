@@ -260,14 +260,14 @@
   "TrinhDoHocVan": [
     {
       "id": "1",
-      "TuNgay": "2024-06-30T17:00:00.000Z",
-      "DenNgay": "2024-07-26T17:00:00.000Z",
+      "TuNgay": "2024-07-10T17:00:00.000Z",
+      "DenNgay": "2024-07-30T17:00:00.000Z",
       "TrinhDoDaoTao": "Đại học",
       "ChuyenNganhDaoTao": "Công nghệ thông tin",
       "NganhDaoTao": "Công nghệ thông tin",
       "HinhThucDaoTao": "Chính Quy",
       "CoSoDaoTao": "Đại học Thủ Dầu Một",
-      "fileBase64": "C:\\fakepath\\Dev_Nguyen_Phu_An.pdf",
+      "fileBase64": null,
       "action": -1
     },
     {
@@ -352,7 +352,7 @@
       "HinhThucDaoTao": "Chính Quy",
       "CoSoDaoTao": "Đại học Thủ Dầu Một",
       "fileBase64": "C:\\fakepath\\CV - Nguyen Phuong Nam -Intern Deverloper.pdf",
-      "action": 1
+      "action": -1
     },
     {
       "id": "9",
@@ -400,7 +400,7 @@
       "HinhThucDaoTao": "Chính Quy",
       "CoSoDaoTao": "Đại học Thủ Dầu Một",
       "fileBase64": "C:\\fakepath\\THÔNG-TIN-TUYỂN-DỤNG-Java.pdf",
-      "action": 1
+      "action": -1
     }
   ],
   "ChungNhanChungChi": [
@@ -425,7 +425,7 @@
     },
     {
       "id": "13",
-      "TenNhanVien": "Nguyễn Văn Tài",
+      "TenNhanVien": "Nguyễn Văn Tàii",
       "VanBangChungChi": "Bồi dưỡng kiến thức cơ bản công nghệ mới theo chiến lượn VNPT4.0",
       "LoaiChungChi": "Kỹ năng mềm",
       "LinhVucChungChi": "Kỹ năng mềm",
@@ -440,6 +440,25 @@
       "TuNgay": "2023-12-19T17:00:00.000Z",
       "DenNgay": "2024-12-18T17:00:00.000Z",
       "NgayCapChungChi": "2023-12-19T17:00:00.000Z",
+      "action": 1
+    },
+    {
+      "id": 10,
+      "TenNhanVien": "Nguyễn Văn Tài",
+      "VanBangChungChi": "Ielts",
+      "LoaiChungChi": "Kỹ năng mềm",
+      "LinhVucChungChi": "Kỹ năng mềm",
+      "ChungChiQuocTe": true,
+      "MucChungChi": "Giỏi",
+      "FileDinhKem": null,
+      "CoSoDaoTao": "IIG",
+      "DiaDiemDaoTao": "Elearning",
+      "CuDiHoc": false,
+      "Diem": 8.2,
+      "KetQuaXepLoai": "Giỏi",
+      "TuNgay": "2024-06-30T17:00:00.000Z",
+      "DenNgay": "2024-07-30T17:00:00.000Z",
+      "NgayCapChungChi": "2024-06-30T17:00:00.000Z",
       "action": 1
     }
   ],
@@ -475,7 +494,15 @@
       "DenNgay": "2024-07-29T17:00:00.000Z",
       "SanPhamCNTT": "Iotiot",
       "MoTa": "internet of things",
-      "action": 1
+      "action": -1
+    },
+    {
+      "id": 9,
+      "TuNgay": "2024-06-30T17:00:00.000Z",
+      "DenNgay": "2024-07-05T17:00:00.000Z",
+      "SanPhamCNTT": "iot",
+      "MoTa": "tai",
+      "action": -1
     }
   ],
   "QuaTrinhDaoTaoNoiBo": [
@@ -489,6 +516,17 @@
       "DonViDaoTaoBenNgoai": "",
       "DuAnDaoTao": "iott",
       "action": 1
+    },
+    {
+      "id": "1",
+      "TuNgay": "",
+      "DenNgay": "",
+      "TenKhoaDaoTao": "",
+      "HinhThucToChuc": "",
+      "DonViDaoTaoNoiBo": "Tập đoàn VNPT",
+      "DonViDaoTaoBenNgoai": "",
+      "DuAnDaoTao": "",
+      "action": -1
     }
   ]
 }

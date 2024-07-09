@@ -40,6 +40,7 @@ export class ThamGiaDuAnComponent {
   private _QuaTrinhThamGiaDuAnService: QuaTrinhThamGiaDuAnService) {
     // this.loadcustomer();
   }
+  isEmpty: boolean = false;
 
   ngOnInit(): void {
       this.getQuaTrinhThamGiaDuAn();
@@ -52,6 +53,7 @@ export class ThamGiaDuAnComponent {
         this.dataSource = new MatTableDataSource(filteredData);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginatior;
+        this.isEmpty = filteredData.length === 0;
       },
       error: (err) => {
         console.log(err);

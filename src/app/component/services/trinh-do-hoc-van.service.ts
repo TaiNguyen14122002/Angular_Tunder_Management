@@ -6,7 +6,8 @@ import { Observable, Subject, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class TrinhDoHocVanService {
-  private apiUrl = 'http://localhost:3000/TrinhDoHocVan';
+  
+  private apiUrl = ' https://974ef8e41625c685db6795abea8f451d.serveo.net/TrinhDoHocVan';
   private currentId: number; // Khởi tạo ID bắt đầu từ 1
   public refreshDataSubject: Subject<void>; // Subject for refreshing data
 
@@ -23,7 +24,7 @@ export class TrinhDoHocVanService {
 
   addTrinhDoHocVan(data:any): Observable<any>{
     data.id = this.getNextId(); // Gán ID tự động tăng
-    return this._http.post('http://localhost:3000/TrinhDoHocVan', data);
+    return this._http.post(' https://974ef8e41625c685db6795abea8f451d.serveo.net/TrinhDoHocVan', data);
   }
 
   updateTrinhDoHocVan(id: number, data: any): Observable<any> {

@@ -6,7 +6,7 @@
 
 
 
-        <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z11">
+        <table matSort  mat-table [dataSource]="dataSource" class="mat-elevation-z11">
 
             <ng-container matColumnDef="STT">
                 <th mat-sort-header mat-header-cell *matHeaderCellDef> STT</th>
@@ -50,11 +50,17 @@
 
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
+            <tr *matNoDataRow>
+                <td class="mat-cell" [attr.colspan]="displayedColumns.length" style="text-align: center;">
+                    Không có dữ liệu
+                </td>
+            </tr>
         </table>
 
     </mat-card-content>
+   
     <br>
     <mat-card-footer>
 

@@ -144,6 +144,17 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
 
+      <!-- Hàng hiển thị khi không có dữ liệu -->
+    <tr *matNoDataRow>
+      <td class="mat-cell" colspan="displayedColumns.length">Không có dữ liệu</td>
+    </tr>
+
+    <tr *matNoDataRow>
+      <td class="mat-cell" [attr.colspan]="displayedColumns.length" style="text-align: center;">
+          Không có dữ liệu
+      </td>
+  </tr>
+
     </table>
 
   </mat-card-content>

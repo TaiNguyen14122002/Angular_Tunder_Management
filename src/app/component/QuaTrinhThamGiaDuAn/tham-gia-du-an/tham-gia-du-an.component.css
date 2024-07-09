@@ -20,3 +20,17 @@ th{
   .example-full-width {
     width: 100%;
   }
+  .no-data {
+    text-align: center;
+    height: 100px; /* Điều chỉnh chiều cao tùy ý */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px; /* Điều chỉnh kích thước font tùy ý */
+  }
+
+  .no-data {
+    height: 60px; /* Adjust height as needed */
+}
+
+  
