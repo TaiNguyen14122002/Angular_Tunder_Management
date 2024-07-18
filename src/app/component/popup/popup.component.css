@@ -1,19 +1,157 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+
+
+.example-full-width {
+  width: 98%;
+}
+
+.example-section {
+  margin: 12px 0;
+}
+
+.example-margin {
+  margin: 0 12px;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 4px;
+}
+
 
 mat-card{
-    margin: 2%;
-    text-align: left;
+  margin: 2%;
+  text-align: left;
 }
 
 .mat-mdc-form-field {
-    width: 98%;
-    margin: 1%;
-}
+  width: 100%;
+  margin: 1%;
+} */
 
 .mat-50{
-    width: 48%;
-    margin: 1%;
+  width: 100%;
+  margin: 1%;
 }
 
 button{
-    margin: 2px;
+  margin: 2px;
 }
+
+.example-full-width {
+width: 98%;
+}
+
+.date-range-container {
+display: flex;
+justify-content: space-between;
+
+}
+.checkbox-group {
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+}
+
+.example-form-field {
+flex: 1;
+margin-right: 10px;
+}
+
+.example-section {
+margin-top: 20px;
+}
+
+.example-margin {
+margin: 0 10px;
+}
+
+
+.example-full-width {
+width: 100%;
+}
+
+.example-form-field {
+width: 100%; /* Điều chỉnh chiều rộng của các trường form */
+}
+
+
+.checkbox-group {
+display: flex;
+
+}
+
+.mat-dialog-content {
+padding: 20px; /* Padding bổ sung cho nội dung form */
+}
+
+.mat-dialog-actions {
+justify-content: flex-end; /* Căn lề phải cho các action button */
+}
+
+.form-row {
+display: flex;
+width: 100%;
+}
+
+.example-half-width {
+width: calc(50% - 10px); /* Độ rộng 50% của container cha và cách lề 10px */
+}
+
+.example-half-width:first-child {
+margin-right: 6px; /* Khoảng cách bên phải của phần tử đầu tiên */
+}
+
+.example-half-width:last-child {
+margin-left: 6px; /* Khoảng cách bên trái của phần tử cuối cùng */
+}
+
+.form-row label {
+font-size: 14px;
+color: #3093cd;
+margin-left: 10px;
+}
+
+.file-input-container {
+position: relative;
+overflow: hidden;
+display: inline-block;
+}
+
+.file-input {
+position: absolute;
+font-size: 100px;
+opacity: 0;
+right: 0;
+top: 0;
+}
+
+.file-label {
+background-color: #007bff;
+color: #fff;
+padding: 10px 20px;
+cursor: pointer;
+display: inline-block;
+}
+
+.file-input:hover + .file-label,
+.file-input:focus + .file-label {
+background-color: #0056b3;
+}
+
+.file-input:disabled + .file-label {
+opacity: 0.5;
+cursor: default;
+}
+#selectedFileName {
+margin-top: 10px; /* Khoảng cách giữa input và tên tệp đã chọn */
+font-style: italic; /* Style của tên tệp đã chọn */
+color: #333; /* Màu sắc của tên tệp đã chọn */
+}
+

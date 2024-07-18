@@ -1,129 +1,223 @@
+<form style="width: 100%;" [formGroup]="empForm" (ngSubmit)="onFromSubmit()">
+  <h1 mat-dialog-title style="background-color: #3092cd; text-align: center; color: aliceblue;">Thêm chứng nhận, chứng
+    chỉ</h1>
 
-<form [formGroup]="empForm" (ngSubmit)="onFromSubmit()" >
-    <h1 mat-dialog-title>Thêm chứng nhận, chứng chỉ</h1>
-  
-    <div mat-dialog-content>
-        
-            <mat-form-field class="example-full-width">
-              <mat-label>Tên nhân viên</mat-label>
-              <input matInput #message maxlength="256" formControlName="TenNhanVien"  placeholder="Nhập tên nhân viên ...">
-            </mat-form-field>
-          
-
-         
-            <mat-form-field class="example-full-width">
-              <mat-label>Văn bằng chứng chỉ</mat-label>
-              <input matInput #message maxlength="256" formControlName="VanBangChungChi"  placeholder="Văn bằng chứng chỉ ...">
-            </mat-form-field>
-          
-
+  <div mat-dialog-content>
+    <div class="date-range-container">
+      <div class="form-row">
+        <div class="example-form-field">
+          <label>Ngày tạo*</label>
           <mat-form-field>
-            <mat-label>Loại chứng chỉ</mat-label>
-            <select matNativeControl required formControlName="LoaiChungChi">
-              <option value="Kỹ năng mềm">Kỹ năng mềm</option>
-            </select>
+            <mat-label>Từ ngày</mat-label>
+            <input matInput [matDatepicker]="startDatePicker" formControlName="TuNgay" />
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDatePicker></mat-datepicker>
+            <mat-error *ngIf="empForm.get('TuNgay')?.hasError('required')">
+              Vui lòng chọn ngày tạo chứng chỉ
+            </mat-error>
           </mat-form-field>
+        </div>
 
+        <div class="example-form-field">
+          <label>Ngày tạo (Đến ngày)*</label>
           <mat-form-field>
-            <mat-label>Lĩnh vực chứng chỉ</mat-label>
-            <select matNativeControl required formControlName="LinhVucChungChi">
-              <option value="Kỹ năng mềm">Kỹ năng mềm</option>
-            </select>
+            <mat-label>Đến ngày</mat-label>
+            <input matInput [matDatepicker]="endDatePicker" formControlName="DenNgay"
+              [matDatepickerFilter]="endDateFilter" />
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #endDatePicker></mat-datepicker>
+            <mat-error *ngIf="empForm.get('DenNgay')?.hasError('required')">
+              Vui lòng chọn ngày hết hạn chứng chỉ
+            </mat-error>
           </mat-form-field>
+        </div>
+      </div>
+    </div>
 
-          <section class="example-section">
-            <mat-checkbox class="example-margin" formControlName="ChungChiQuocTe">Chứng chỉ quốc tế</mat-checkbox>
-          </section>
-
-          <mat-form-field>
-            <mat-label>Mức chứng chỉ</mat-label>
-            <select matNativeControl required formControlName="MucChungChi">
-              <option value="Giỏi">Giỏi</option>
-            </select>
-          </mat-form-field>
-
-          
-            <mat-form-field class="example-full-width">
-              <mat-label>Cơ sở đào tạo</mat-label>
-              <input matInput #message maxlength="256" formControlName="CoSoDaoTao"  placeholder="Cơ sở đào tạo ...">
-            </mat-form-field>
-          
-
-          <mat-form-field>
-            <mat-label>Địa điểm đào tạo</mat-label>
-            <select matNativeControl required formControlName="DiaDiemDaoTao">
-              <option value="Elearning">Elearning</option>
-            </select>
-          </mat-form-field>
-
-          <section class="example-section">
-            <mat-checkbox class="example-margin" formControlName="CuDiHoc">Cử đi học</mat-checkbox>
-          </section>
-
-          
-            <mat-form-field class="example-full-width">
-              <mat-label>Điểm</mat-label>
-              <input matInput #message maxlength="256" type="number" formControlName="Diem"  placeholder="Điểm ...">
-            </mat-form-field>
-          
-
-          <mat-form-field>
-            <mat-label>Kết quả xếp loại</mat-label>
-            <select matNativeControl required formControlName="KetQuaXepLoai">
-              <option value="Giỏi">Giỏi</option>
-            </select>
-          </mat-form-field>
-
-          <mat-form-field class="example-form-field">
-            <mat-label>Ngày cấp chứng chỉ*</mat-label>
-            <input matInput [matDatepicker]="NgayCapChungChi" formControlName="NgayCapChungChi" />
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="NgayCapChungChi"></mat-datepicker-toggle>
-            <mat-datepicker #NgayCapChungChi>
-              <mat-datepicker-actions>
-                <button mat-button matDatepickerCancel>Trở về</button>
-                <button mat-raised-button matDatepickerApply>Chọn</button>
-              </mat-datepicker-actions>
-            </mat-datepicker>
-          </mat-form-field>
-
-  
-      <mat-form-field class="example-form-field">
-        <mat-label>Ngày tạo(Từ ngày)*</mat-label>
-        <input matInput [matDatepicker]="startDatePicker" formControlName="TuNgay" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker #startDatePicker>
-          <mat-datepicker-actions>
-            <button mat-button matDatepickerCancel>Trở về</button>
-            <button mat-raised-button matDatepickerApply>Chọn</button>
-          </mat-datepicker-actions>
-        </mat-datepicker>
-      </mat-form-field>
-  
-      <mat-form-field class="example-form-field">
-        <mat-label>Ngày tạo(Đến ngày)*</mat-label>
-        <input matInput [matDatepicker]="endDatePicker" formControlName="DenNgay" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker #endDatePicker>
-          <mat-datepicker-actions>
-            <button mat-button matDatepickerCancel>Trở về</button>
-            <button mat-raised-button matDatepickerApply>Chọn</button>
-          </mat-datepicker-actions>
-        </mat-datepicker>
-      </mat-form-field>
-      
-      <div>
-        <input type="file" formControlName="FileDinhKem" (change)="onFileSelect($event)" accept=".pdf"/>
+    <div class="form-row">
+      <div style="width: 98%;">
+        <label>Tên nhân viên</label>
+        <mat-form-field>
+          <input matInput #message maxlength="250" formControlName="TenNhanVien" placeholder="Nhập tên nhân viên ...">
+          <mat-error *ngIf="empForm.get('TenNhanVien')?.hasError('required')">
+            Vui lòng nhập tên nhân viên
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="example-half-width">
+        <label>Văn bằng chứng chỉ</label>
+        <mat-form-field>
+          <input matInput formControlName="VanBangChungChi" placeholder="Văn bằng chứng chỉ ...">
+          <mat-error *ngIf="empForm.get('VanBangChungChi')?.hasError('required')">
+            Xin vui lòng nhập văn bằng chứng chỉ
+          </mat-error>
+        </mat-form-field>
       </div>
 
-  
+      <div class="example-half-width">
+        <label>Loại chứng chỉ</label>
+        <mat-form-field>
+          <mat-select formControlName="LoaiChungChi" placeholder="Chọn loại chứng chỉ">
+            <ngx-mat-select-search [formControl]="searchControlLoaiLinhVuc" placeholderLabel="Tìm kiếm"
+              noEntriesFoundLabel="Không có kết quả"></ngx-mat-select-search>
+            <mat-option *ngFor="let option of FillteredOptionsLoaiLinhVuc | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="empForm.get('LoaiChungChi')?.hasError('required')">
+            Xin vui lòng chọn loại chứng chỉ
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
     </div>
-  
-    <div mat-dialog-actions>
-      <button mat-raised-button type="submit" color="primary" >Thêm</button>
-      <a (click)="closepopup()" mat-raised-button color="warn" [mat-dialog-close]="false" type="button">Trở lại</a>
-      <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
+
+    <div class="form-row">
+      <div class="example-half-width">
+        <label>Lĩnh vực chứng chỉ</label>
+        <mat-form-field>
+          <mat-select matNativeControl required formControlName="LinhVucChungChi" placeholder="Chọn lĩnh vực chứng chỉ">
+            <ngx-mat-select-search [formControl]="searchControlLinhVuc" placeholderLabel="Tìm kiếm"
+              noEntriesFoundLabel="Không có kết quả"></ngx-mat-select-search>
+            <mat-option *ngFor="let option of FilteredOptionsLinhVuc | async" [value]="option">
+              {{ option }}
+            </mat-option>
+
+          </mat-select>
+          <mat-error *ngIf="empForm.get('LinhVucChungChi')?.hasError('required')">
+            Xin vui lòng chọn lĩnh vực chứng chỉ
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="example-half-width">
+        <label>Điểm</label>
+        <mat-form-field>
+          <input matInput #message type="number" formControlName="Diem" placeholder="Điểm ...">
+          <mat-error *ngIf="empForm.get('Diem')?.hasError('required')">
+            Vui lòng nhập điểm
+          </mat-error>
+          <mat-error *ngIf="empForm.get('Diem')?.hasError('min')">
+            Điểm phải lớn hơn hoặc bằng 10
+          </mat-error>
+          <mat-error *ngIf="empForm.get('Diem')?.hasError('max')">
+            Điểm phải nhỏ hơn hoặc bằng 100
+          </mat-error>
+          <mat-error *ngIf="empForm.get('Diem')?.hasError('pattern')">
+            Điểm không hợp lệ, chỉ chấp nhận số tự nhiên hoặc số thực
+          </mat-error>
+        </mat-form-field>
+      </div>
+
     </div>
-  </form>
+
+
+    <div class="form-row">
+
+      <div class="example-half-width">
+        <label>Mức chứng chỉ</label>
+        <mat-form-field>
+          <mat-select matNativeControl required formControlName="MucChungChi" placeholder="Chọn mức chứng chỉ">
+            <mat-option value="Cơ bản">Cơ bản</mat-option>
+            <mat-option value="Nâng cao">Nâng cao</mat-option>
+            <mat-option value="Chuyên sâu">Chuyên sâu</mat-option>
+            <mat-option value="Chuyên gia">Chuyên gia</mat-option>
+            <mat-option value="Master">Master</mat-option>
+          </mat-select>
+          <mat-error *ngIf="empForm.get('MucChungChi')?.hasError('required')">
+            Xin vui lòng chọn mức chứng chỉ
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="example-half-width">
+        <label>Kết quả xếp loại</label>
+        <mat-form-field>
+          <mat-select matNativeControl required formControlName="KetQuaXepLoai" placeholder="Chọn kết quả xếp loại">
+            <ngx-mat-select-search [formControl]="searchControlKetQua" placeholderLabel="Tìm kiếm"
+              noEntriesFoundLabel="Không có kết quả"></ngx-mat-select-search>
+            <mat-option *ngFor="let option of filteredOptionsKetQua | async" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="empForm.get('KetQuaXepLoai')?.hasError('required')">
+            Xin vui lòng chọn kết quả xếp loại
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <div class="form-row">
+      <div class="example-half-width">
+        <label>Ngày cấp chứng chỉ*</label>
+        <mat-form-field>
+          <input matInput [matDatepicker]="NgayCapChungChi" formControlName="NgayCapChungChi"
+            placeholder="Nhập ngày cấp chứng chỉ" [matDatepickerFilter]="DateFilter" />
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="NgayCapChungChi"></mat-datepicker-toggle>
+          <mat-datepicker #NgayCapChungChi></mat-datepicker>
+          <mat-error *ngIf="empForm.get('NgayCapChungChi')?.hasError('required')">
+            Xin vui lòng chọn ngày cấp chứng chỉ
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div class="checkbox-group">
+        <mat-checkbox class="example-margin" formControlName="CuDiHoc">Cử đi học</mat-checkbox>
+        <mat-checkbox class="example-margin" formControlName="ChungChiQuocTe">Chứng chỉ quốc tế</mat-checkbox>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="example-half-width">
+        <label>Cơ sở đào tạo</label>
+        <mat-form-field>
+          <input matInput #message maxlength="256" formControlName="CoSoDaoTao" placeholder="Cơ sở đào tạo ...">
+          <mat-error *ngIf="empForm.get('CoSoDaoTao')?.hasError('required')">
+            Xin vui lòng nhập cơ sở đào tạo
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="example-half-width">
+        <label>Địa điểm đào tạo</label>
+        <mat-form-field>
+
+          <mat-select matNativeControl required formControlName="DiaDiemDaoTao" value="Đại học Thủ Dầu Một"
+            placeholder="Chọn địa điểm đào tạo">
+            <ngx-mat-select-search [formControl]="searchControl" placeholderLabel="Tìm kiếm"
+              noEntriesFoundLabel="Không có kết quả"></ngx-mat-select-search>
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="empForm.get('DiaDiemDaoTao')?.hasError('required')">
+            Xin vui lòng chọn địa điểm đào tạo
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+
+
+
+
+    <div>
+      <input type="file" formControlName="FileDinhKem" (change)="onFileSelect($event)" accept=".pdf" />
+    </div>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button type="submit"
+      style="background-color: #3092cd; text-align: center; color: aliceblue;">Thêm</button>
+    <a (click)="closepopup()" mat-raised-button color="#3093cd" [mat-dialog-close]="false" type="button">Trở lại</a>
+    <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
+  </div>
+</form>

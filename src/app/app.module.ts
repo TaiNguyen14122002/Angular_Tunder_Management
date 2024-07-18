@@ -31,6 +31,13 @@ import { ChiTietDaoTaoNoiBoComponent } from './component/QuaTrinhDaoTaoNoiBo/chi
 import { SuaDaoTaoNoiBoComponent } from './component/QuaTrinhDaoTaoNoiBo/sua-dao-tao-noi-bo/sua-dao-tao-noi-bo.component';
 import { ThemDaoTaoNoiBoComponent } from './component/QuaTrinhDaoTaoNoiBo/them-dao-tao-noi-bo/them-dao-tao-noi-bo.component';
 import { InfoDetailComponent } from './component/info-detail/info-detail.component';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MatPaginatorIntlVi } from 'mat-paginator-intl-vi';
+
+import { MatDateFormats, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MY_DATE_FORMATS } from 'date-formats';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+
 
 
 
@@ -70,9 +77,13 @@ import { InfoDetailComponent } from './component/info-detail/info-detail.compone
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMatSelectSearchModule
   ],
-  providers: [],
+  providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlVi },
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
+    { provide: MAT_DATE_LOCALE, useValue: 'vi-VN' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

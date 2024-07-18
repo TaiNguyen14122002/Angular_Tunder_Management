@@ -1,77 +1,131 @@
-<form [formGroup]="empForm" (ngSubmit)="onFromSubmit()">
-  <h1 mat-dialog-title>Thêm trình độ học vấn</h1>
+<form style="width: 100%;" [formGroup]="empForm" (ngSubmit)="onFromSubmit()">
+  <h1 mat-dialog-title style="background-color: #3092cd; text-align: center; color: aliceblue;">Thêm trình độ học vấn
+  </h1>
 
   <div mat-dialog-content>
+    <div class="date-range-container">
+      <div class="form-row">
+        <div class="example-form-field">
+          <label>Ngày tạo*</label>
+          <mat-form-field>
+            <mat-label>Từ ngày</mat-label>
+            <input matInput [matDatepicker]="startDatePicker" formControlName="TuNgay" />
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDatePicker></mat-datepicker>
+            <mat-error *ngIf="empForm.get('TuNgay')?.hasError('required')">
+              Vui lòng chọn ngày tạo trình độ học vấn
+            </mat-error>
+          </mat-form-field>
+        </div>
 
-    <mat-form-field class="example-form-field">
-      <mat-label>Ngày tạo(Từ ngày)*</mat-label>
-      <input matInput [matDatepicker]="startDatePicker" formControlName="TuNgay" />
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
-      <mat-datepicker #startDatePicker>
-        <mat-datepicker-actions>
-          <button mat-button matDatepickerCancel>Cancel</button>
-          <button mat-raised-button matDatepickerApply>Apply</button>
-        </mat-datepicker-actions>
-      </mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field class="example-form-field">
-      <mat-label>Ngày tạo(Đến ngày)*</mat-label>
-      <input matInput [matDatepicker]="endDatePicker" formControlName="DenNgay" />
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
-      <mat-datepicker #endDatePicker>
-        <mat-datepicker-actions>
-          <button mat-button matDatepickerCancel>Cancel</button>
-          <button mat-raised-button matDatepickerApply>Apply</button>
-        </mat-datepicker-actions>
-      </mat-datepicker>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Trình độ đào tạo</mat-label>
-      <select matNativeControl required formControlName="TrinhDoDaoTao">
-        <option value="Đại học">Đại học</option>
-      </select>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Chuyên ngành đào tạo</mat-label>
-      <select matNativeControl required formControlName="ChuyenNganhDaoTao">
-        <option value="Công nghệ thông tin">Công nghệ thông tin</option>
-      </select>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Ngành đào tạo</mat-label>
-      <select matNativeControl required formControlName="NganhDaoTao">
-        <option value="Công nghệ thông tin">Công nghệ thông tin</option>
-      </select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Hình thức đào tạo</mat-label>
-      <select matNativeControl required formControlName="HinhThucDaoTao">
-        <option value="Chính Quy">Chính quy</option>
-      </select>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Cơ sở đào tạo</mat-label>
-      <select matNativeControl required formControlName="CoSoDaoTao">
-        <option value="Đại học Thủ Dầu Một">Đại học Thủ Dầu Một</option>
-      </select>
-    </mat-form-field>
-    <div>
-      <input type="file" formControlName="fileBase64" (change)="onFileSelect($event)" accept=".pdf"/>
-    </div>
-    <div>
-      <mat-checkbox formControlName="status">Tôi đã đọc và đồng ý các điều khoản khi thêm trình độ học
-        vấn</mat-checkbox>
+        <div class="example-form-field">
+          <label>Ngày tạo (Đến ngày)*</label>
+          <mat-form-field>
+            <mat-label>Đến ngày</mat-label>
+            <input matInput [matDatepicker]="endDatePicker" formControlName="DenNgay"
+              [matDatepickerFilter]="endDateFilter" />
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #endDatePicker></mat-datepicker>
+            <mat-error *ngIf="empForm.get('DenNgay')?.hasError('required')">
+              Vui lòng chọn ngày hết hạn trình độ học vấn
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
     </div>
 
+    <div class="form-row">
+      <div class="example-half-width">
+        <label>Trình độ đào tạo</label>
+        <mat-form-field>
+          <mat-select formControlName="TrinhDoDaoTao" placeholder="Chọn trình độ đào tạo">
+            <ngx-mat-select-search [formControl]="searchOptionsLoaiLinhVuc" placeholderLabel="Tìm kiếm"
+              noEntriesFoundLabel="Không có kết quả"></ngx-mat-select-search>
+            <mat-option *ngFor="let option of fillteredOptionsLoaiLinhVuc | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="empForm.get('TrinhDoDaoTao')?.hasError('required')">
+            Xin vui lòng chọn trình độ đào tạo
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="example-half-width">
+        <label>Chuyên ngành đào tạo</label>
+        <mat-form-field>
+          <mat-select formControlName="ChuyenNganhDaoTao" placeholder="Chọn chuyên ngành đào tạo">
+            <ngx-mat-select-search [formControl]="searchOptionsChuyenNganh" placeholderLabel="Tìm kiếm"
+              noEntriesFoundLabel="Không có kết quả"></ngx-mat-select-search>
+            <mat-option *ngFor="let option of fillteredOptionsChuyenNganh | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="empForm.get('ChuyenNganhDaoTao')?.hasError('required')">
+            Xin vui lòng chọn chuyên ngành đào tạo
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="example-half-width">
+        <label>Ngành đào tạo</label>
+        <mat-form-field>
+          <mat-select formControlName="NganhDaoTao" placeholder="Chọn ngành đào tạo">
+            <ngx-mat-select-search [formControl]="searchOptionsNganhDaoTao" placeholderLabel="Tìm kiếm"
+              noEntriesFoundLabel="Không có kết quả"></ngx-mat-select-search>
+            <mat-option *ngFor="let option of fillteredOptionsNganhDaoTao | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="empForm.get('NganhDaoTao')?.hasError('required')">
+            Xin vui lòng chọn ngành đào tạo
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="example-half-width">
+        <label>Hình thức đào tạo</label>
+        <mat-form-field>
+          <mat-select formControlName="HinhThucDaoTao" placeholder="Chọn hình thức đào tạo">
+            <ngx-mat-select-search [formControl]="searchOptionsHinhThucDaoTao" placeholderLabel="Tìm kiếm"
+              noEntriesFoundLabel="Không có kết quả"></ngx-mat-select-search>
+            <mat-option *ngFor="let option of filleredOptionsHinThucDaoTao | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="empForm.get('HinhThucDaoTao')?.hasError('required')">
+            Xin vui lòng chọn hình thức đào tạo
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="example-half-width">
+        <label>Cơ sở đào tạo</label>
+        <mat-form-field>
+          <input matInput #message maxlength="256" formControlName="CoSoDaoTao" placeholder="Cơ sở đào tạo ...">
+          <mat-error *ngIf="empForm.get('CoSoDaoTao')?.hasError('required')">
+            Xin vui lòng nhập cơ sở đào tạo
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="example-half-width" style="display: flex;
+      align-items: center;
+      justify-content: center;">
+        <input type="file" formControlName="fileBase64" (change)="onFileSelect($event)" accept=".pdf" />
+      </div>
+    </div>
   </div>
 
   <div mat-dialog-actions>
-    <button mat-raised-button type="submit" color="primary" >Thêm</button>
-    <a (click)="closepopup()" mat-raised-button color="warn" [mat-dialog-close]="false" type="button">Trở lại</a>
+    <button mat-raised-button type="submit"
+      style="background-color: #3092cd; text-align: center; color: aliceblue;">Thêm</button>
+    <a (click)="closepopup()" mat-raised-button color="#3093cd" [mat-dialog-close]="false" type="button">Trở lại</a>
     <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
   </div>
 </form>

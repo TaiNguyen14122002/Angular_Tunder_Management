@@ -1,127 +1,229 @@
+<form style="width: 100%;" [formGroup]="empForm" (ngSubmit)="onFromSubmit()">
 
-<form [formGroup]="empForm" (ngSubmit)="onFromSubmit()" >
-    <h1 mat-dialog-title>Thêm quá trình công tác</h1>
-  
-    <div mat-dialog-content>
-        
-            <mat-form-field class="example-full-width">
-              <mat-label>Tên nhân sự</mat-label>
-              <input matInput #message maxlength="256" formControlName="TenNhanVien"  placeholder="Nhập tên nhân viên ...">
-            </mat-form-field>
+  <h1 mat-dialog-title style="background-color: #3092cd; text-align: center; color: aliceblue;">Thêm quá trình công tác</h1>
 
-            <mat-form-field class="example-full-width">
-              <mat-label>Mô tả</mat-label>
-              <input matInput #message maxlength="256" formControlName="MoTa"  placeholder="Mô tả ...">
-            </mat-form-field>
+  <div mat-dialog-content>
+    <div class="date-range-container">
+      <div class="form-row">
+        <div class="example-half-width">
+          <label>Tên nhân sự</label>
+          <mat-form-field>
+            <input matInput #message maxlength="250" formControlName="TenNhanVien" placeholder="Nhập tên nhân sự ...">
+            <mat-error *ngIf="empForm.get('TenNhanVien')?.hasError('required')">
+              Vui lòng nhập tên nhân sự
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="example-half-width">
+          <label>Chức danh</label>
+          <mat-form-field>
+            <input matInput #message maxlength="250" formControlName="ChucDanh"
+              placeholder="Nhập chức danh nhân sự ...">
+            <mat-error *ngIf="empForm.get('TenNhanVien')?.hasError('required')">
+              Vui lòng nhập chức danh của nhân sự
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
 
-            <mat-form-field>
-              <mat-label>Trong ngành</mat-label>
-              <select matNativeControl required formControlName="TrongNganh">
-                <option value="True">Trong ngành</option>
-              </select>
-            </mat-form-field>
-          
+      <div class="form-row">
+        <div class="example-half-width">
+          <label>Đơn vị công tác</label>
+          <mat-form-field>
+            <input matInput #message maxlength="250" formControlName="DonVi" placeholder="Nhập tên nhân sự ...">
+            <mat-error *ngIf="empForm.get('TenNhanVien')?.hasError('required')">
+              Vui lòng nhập tên đơn vị công tác
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="example-half-width checkbox-group">
+          <mat-checkbox class="example-margin" formControlName="TrongNganh">Trong ngành</mat-checkbox>
+        </div>
+      </div>
 
-         
-            <mat-form-field class="example-full-width">
-              <mat-label>Đơn vị</mat-label>
-              <input matInput #message maxlength="256" formControlName="DonVi"  placeholder="Đơn vị ...">
-            </mat-form-field>
-            
-            <mat-form-field class="example-full-width">
-                <mat-label>Chức danh</mat-label>
-                <input matInput #message maxlength="256" formControlName="ChucDanh"  placeholder="Chức danh ...">
-              </mat-form-field>
+      <div class="form-row">
+        <div style="width: 98%;">
+          <label>Mô tả</label>
+          <mat-form-field>
+            <input matInput #message maxlength="250" formControlName="MoTa" placeholder="Nhập tên nhân viên ...">
+            <mat-error *ngIf="empForm.get('MoTa')?.hasError('required')">
+              Vui lòng nhập mô tả
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
 
-              <mat-form-field class="example-full-width">
-                <mat-label>Khoá đào tạo</mat-label>
-                <input matInput #message maxlength="256" formControlName="KhoaDaoTao"  placeholder="Khoá đào tạo ...">
-              </mat-form-field>
+      <div class="form-row">
+        <div class="example-half-width">
+          <label>Khoá đào tạo</label>
+          <mat-form-field>
+            <mat-select matNativeControl required formControlName="KhoaDaoTao" placeholder="Chọn khoá đào tạo">
+              <ngx-mat-select-search [formControl]="searchControlKhoaDaoTao" placeholderLabel="Tìm kiếm"
+                noEntriesFoundLabel="Không có kết quả"></ngx-mat-select-search>
+              <mat-option *ngFor="let option of filteredOptionsKhoaDaoTao | async" [value]="option">
+                {{ option }}
+              </mat-option>
 
-              
+            </mat-select>
+            <mat-error *ngIf="empForm.get('KhoaDaoTao')?.hasError('required')">
+              Xin vui lòng chọn khoá đào tạo
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="example-half-width">
+          <label>Đơn vị đào tạo</label>
+          <mat-form-field>
+            <mat-select matNativeControl required formControlName="DonViDaoTao" placeholder="Chọn đơn vị đào tạo">
+              <ngx-mat-select-search [formControl]="searchControlDonViDaoTao" placeholderLabel="Tìm kiếm"
+                noEntriesFoundLabel="Không có kết quả"></ngx-mat-select-search>
+              <mat-option *ngFor="let option of fillteredOptionsDonViDaoTao | async" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="empForm.get('DonViDaoTao')?.hasError('required')">
+              Vui lòng chọn đơn vị đào tạo
+            </mat-error>
+          </mat-form-field>
+        </div>
 
-              <mat-form-field class="example-full-width">
-                <mat-label>Hình thức tổ chức</mat-label>
-                <input matInput #message maxlength="256" formControlName="DonViToChuc"  placeholder="Hình thức tổ chức ...">
-              </mat-form-field>
+      </div>
 
-              <mat-form-field>
-                <mat-label>Đơn vị đào tạo</mat-label>
-                <select matNativeControl required formControlName="DonViDaoTao">
-                  <option value="Tập đoàn VNPT">Tập đoàn VNPT</option>
-                </select>
-              </mat-form-field>
+      <div class="form-row">
+        <div class="example-half-width">
+          <label>Hình thức đào tạo</label>
+          <mat-form-field>
+            <mat-select matNativeControl required formControlName="HinhThucToChuc" placeholder="Chọn hình thức đào tạo">
+              <ngx-mat-select-search [formControl]="seatchControlHinhThucDaoTao" placeholderLabel="Tìm kiếm"
+                noEntriesFoundLabel="Không có kết quả"></ngx-mat-select-search>
+              <mat-option *ngFor="let option of fillteredOptionsHinhThucDaoTao | async" [value]="option">
+                {{ option }}
+              </mat-option>
 
-              <mat-form-field class="example-full-width">
-                <mat-label>Điểm số</mat-label>
-                <input matInput #message maxlength="256" formControlName="DiemSo" type="number"  placeholder="Điểm số ...">
-              </mat-form-field>
+            </mat-select>
+            <mat-error *ngIf="empForm.get('HinhThucToChuc')?.hasError('required')">
+              Xin vui lòng chọn hình thức đào tạo
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="example-half-width">
+          <label>Chi phí đào tạo</label>
+          <mat-form-field>
+            <input matInput #message maxlength="250" formControlName="ChiPhiDaoTao"
+              placeholder="Nhập chi phí đào tạo ...">
+            <mat-error *ngIf="empForm.get('ChiPhiDaoTao')?.hasError('required')">
+              Vui lòng nhập chi phí đào tạo
+            </mat-error>
+          </mat-form-field>
+        </div>
 
-              <mat-form-field class="example-full-width">
-                <mat-label>Kết quả khoá đào tạo</mat-label>
-                <input matInput #message maxlength="256" formControlName="KetQuaKhoaDaoTao"  placeholder="Kết quả khoá đào tạo ...">
-              </mat-form-field>
+      </div>
 
-              <section class="example-section">
-                <mat-checkbox class="example-margin" formControlName="DuocCapChungChi">Được cấp chức chỉ</mat-checkbox>
-              </section>
+      <div class="form-row">
+        <div class="example-half-width">
+          <label>Tranh thái đào tạo</label>
+          <mat-form-field>
+            <mat-select matNativeControl required formControlName="TrangThai" placeholder="Chọn trạng thái đào tạo">
+              <ngx-mat-select-search [formControl]="searchControlTrangThaiDaoTao" placeholderLabel="Tìm kiếm"
+                noEntriesFoundLabel="Không có kết quả"></ngx-mat-select-search>
+              <mat-option *ngFor="let option of fillteredOptionsTrangThaiDaoTao | async" [value]="option">
+                {{ option }}
+              </mat-option>
 
-              <mat-form-field class="example-full-width">
-                <mat-label>Chi phí đào tạo</mat-label>
-                <input matInput #message maxlength="256" formControlName="ChiPhiDaoTao" type="number"  placeholder="Chi phí đào tạo ...">
-              </mat-form-field>
-              
+            </mat-select>
+            <mat-error *ngIf="empForm.get('TrangThai')?.hasError('required')">
+              Xin vui lòng chọn trạng thái đào tạo
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="example-half-width">
+          <label>Điểm số</label>
+          <mat-form-field>
+            <input matInput #message type="number" formControlName="Diem" placeholder="Điểm ...">
+            <mat-error *ngIf="empForm.get('Diem')?.hasError('required')">
+              Vui lòng nhập điểm
+            </mat-error>
+          </mat-form-field>
+        </div>
 
-              <mat-form-field class="example-full-width">
-                <mat-label>Trạng thái</mat-label>
-                <input matInput #message maxlength="256" formControlName="TrangThai"  placeholder="Trang thái ...">
-              </mat-form-field>
+      </div>
 
-              <section class="example-section">
-                <mat-checkbox class="example-margin" formControlName="KiHopDongDaoTao">Kí hợp đồng đào tạo</mat-checkbox>
-              </section>
+      <div class="form-row">
+        <div class="example-half-width">
+          <label>Kết quả các môn</label>
+          <mat-form-field>
+            <mat-select matNativeControl required formControlName="KetQuaCacMon" placeholder="Chọn lĩnh vực chứng chỉ">
+              <mat-option value="Xuất sắc">Xuất sắc</mat-option>
+              <mat-option value="Giỏi">Giỏi</mat-option>
+              <mat-option value="Khá">Khá</mat-option>
+              <mat-option value="Trung bình">Trung bình</mat-option>
+              <mat-option value="Yếu">Yếu</mat-option>
+              <mat-option value="Kém">Kém</mat-option>
+            </mat-select>
+            <mat-error *ngIf="empForm.get('KetQuaCacMon')?.hasError('required')">
+              Xin vui lòng chọn kết quả các môn
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="example-half-width">
+          <label>Kết quả khoá đào tạo</label>
+          <mat-form-field>
+            <mat-select matNativeControl required formControlName="KetQuaKhoaDaoTao"
+              placeholder="Chọn lĩnh vực chứng chỉ">
+              <mat-option value="Xuất sắc">Xuất sắc</mat-option>
+              <mat-option value="Giỏi">Giỏi</mat-option>
+              <mat-option value="Khá">Khá</mat-option>
+              <mat-option value="Trung bình">Trung bình</mat-option>
+              <mat-option value="Yếu">Yếu</mat-option>
+              <mat-option value="Kém">Kém</mat-option>
+            </mat-select>
+            <mat-error *ngIf="empForm.get('KetQuaKhoaDaoTao')?.hasError('required')">
+              Vui lòng chọn kết quả khoá đào tạo
+            </mat-error>
+          </mat-form-field>
+        </div>
 
-              <mat-form-field class="example-full-width">
-                <mat-label>Kết quả các môn</mat-label>
-                <input matInput #message maxlength="256" formControlName="KetQuaKhoaDaoTao"  placeholder="Kết quả các mông ...">
-              </mat-form-field>
- 
-      <mat-form-field class="example-form-field">
-        <mat-label>Thời gian đào tạo(Từ ngày)*</mat-label>
-        <input matInput [matDatepicker]="startDatePicker" formControlName="TuNgay" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker #startDatePicker>
-          <mat-datepicker-actions>
-            <button mat-button matDatepickerCancel>Trở về</button>
-            <button mat-raised-button matDatepickerApply>Chọn</button>
-          </mat-datepicker-actions>
-        </mat-datepicker>
-      </mat-form-field>
-  
-      <mat-form-field class="example-form-field">
-        <mat-label>Thời gian đào tạo(Đến ngày)*</mat-label>
-        <input matInput [matDatepicker]="endDatePicker" formControlName="DenNgay" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker #endDatePicker>
-          <mat-datepicker-actions>
-            <button mat-button matDatepickerCancel>Trở về</button>
-            <button mat-raised-button matDatepickerApply>Chọn</button>
-          </mat-datepicker-actions>
-        </mat-datepicker>
-      </mat-form-field>
-<!--       
-      <div>
-        <input type="file" formControlName="FileDinhKem" (change)="onFileSelect($event)" accept=".pdf"/>
-      </div> -->
+      </div>
 
-  
+      <div class="form-row">
+        <div class="example-form-field">
+          <label>Ngày tạo*</label>
+          <mat-form-field>
+            <mat-label>Từ ngày</mat-label>
+            <input matInput [matDatepicker]="startDatePicker" formControlName="TuNgay" />
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDatePicker></mat-datepicker>
+            <mat-error *ngIf="empForm.get('TuNgay')?.hasError('required')">
+              Vui lòng chọn ngày tạo chứng chỉ
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="example-form-field">
+          <label>Ngày tạo (Đến ngày)*</label>
+          <mat-form-field>
+            <mat-label>Đến ngày</mat-label>
+            <input matInput [matDatepicker]="endDatePicker" formControlName="DenNgay"
+              [matDatepickerFilter]="endDateFilter" />
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #endDatePicker></mat-datepicker>
+            <mat-error *ngIf="empForm.get('DenNgay')?.hasError('required')">
+              Vui lòng chọn ngày hết hạn chứng chỉ
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
     </div>
-  
-    <div mat-dialog-actions>
-      <button mat-raised-button type="submit" color="primary" >Thêm</button>
-      <a (click)="closepopup()" mat-raised-button color="warn" [mat-dialog-close]="false" type="button">Trở lại</a>
-      <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
-    </div>
-  </form>
+    
+  </div>
+
+
+
+  <div mat-dialog-actions>
+    <button mat-raised-button type="submit"
+      style="background-color: #3092cd; text-align: center; color: aliceblue;">Thêm</button>
+    <a (click)="closepopup()" mat-raised-button color="#3093cd" [mat-dialog-close]="false" type="button">Trở lại</a>
+    <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
+  </div>
+</form>
