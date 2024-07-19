@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class QuaTrinhThamGiaDuAnService {
 
-  private apiUrl = ' https://974ef8e41625c685db6795abea8f451d.serveo.net/QuaTrinhThamGiaDuAn';
+  private apiUrl = ' http://localhost:3000/QuaTrinhThamGiaDuAn';
   private currentId: number; // Khởi tạo ID bắt đầu từ 1
 
   constructor(private _http: HttpClient) {
@@ -26,7 +26,7 @@ export class QuaTrinhThamGiaDuAnService {
 
   addQuaTrinhThamGiaDuAn(data:any): Observable<any>{
     data.id = this.getNextId(); // Gán ID tự động tăng
-    return this._http.post(' https://974ef8e41625c685db6795abea8f451d.serveo.net/QuaTrinhThamGiaDuAn', data);
+    return this._http.post(' http://localhost:3000/QuaTrinhThamGiaDuAn', data);
   }
 
   updateQuaTrinhThamGiaDuAn(id: number, updatedData: any): Observable<any> {

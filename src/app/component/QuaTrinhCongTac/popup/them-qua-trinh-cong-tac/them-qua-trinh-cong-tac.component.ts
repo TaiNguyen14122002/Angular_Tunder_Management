@@ -67,16 +67,16 @@ export class ThemQuaTrinhCongTacComponent implements OnInit{
       ChucDanh: ['', Validators.required],
       KhoaDaoTao:['', Validators.required],
       HinhThucToChuc: ['', Validators.required],
-      DonViToChuc: ['', Validators.required],
+      // DonViToChuc: ['', Validators.required],
       DonViDaoTao: ['', Validators.required],
       DiemSo: ['', [Validators.required, Validators.min(10), Validators.max(100), Validators.pattern(/^\d+(\.\d+)?$/)]],
       KetQuaKhoaDaoTao:['', Validators.required],
-      DuocCapChungChi: [false],
+      // DuocCapChungChi: [false],
       TrongNganh: [false],
       ChiPhiDaoTao: ['', Validators.required],
       TrangThai: ['', Validators.required],
-      KiHopDongDaoTao: [false],
-      NoiDungCamKet: ['', Validators.required],
+      // KiHopDongDaoTao: [false],
+      // NoiDungCamKet: ['', Validators.required],
       TuNgay: ['', Validators.required],
       DenNgay: ['', Validators.required],
       KetQuaCacMon: ['', Validators.required],
@@ -87,7 +87,9 @@ export class ThemQuaTrinhCongTacComponent implements OnInit{
   }
 
   onFromSubmit() {
+    console.log("tAI")
     if (this.empForm.valid) {
+      console.log("tAItAI")
       this._empService.addQuaTrinhCongTac(this.empForm.value).subscribe({
         next: (val: any) => {
           alert('QuaTrinhCongTac added successflly');

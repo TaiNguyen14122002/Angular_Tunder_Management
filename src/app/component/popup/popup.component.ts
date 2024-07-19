@@ -46,9 +46,9 @@ export class PopupComponent implements OnInit {
   protected _onDestroy = new Subject<void>();
 
   LoaiLinhVuc: string[] = ['Cao đẳng', 'Đại học', 'Thạc sĩ', 'Tiến sĩ'];
-  ChuyenNganh: string[] = ['Khoa học máy tính', 'Kỹ thuật phần mềm', 'An toàn thông tin', 'Mạng máy tính'];
-  NganhDaoTao: string[] = ['Công nghệ thông tin', 'Kinh tế', 'Quản trị kinh doanh', 'Ngôn ngữ Anh'];
-  HinhThucDaoTao: string[] = ['Chính quy', 'Văn bằng 2', 'Văn bằng 2 chất lượng cao', 'Văn bằng 2 liên thông'];
+  ChuyenNganh: string[] = ['Khoa học Máy tính', 'Kỹ thuật phần mềm', 'An toàn thông tin', 'Mạng máy tính', 'Công nghệ thông tin', 'Quản trị Kinh doanh', 'Kinh tế'];
+  NganhDaoTao: string[] = ['Công nghệ thông tin', 'Kinh tế', 'Quản trị Kinh doanh', 'Ngôn ngữ Anh', 'Khoa học Máy tính', 'Kỹ thuật phần mềm', 'Kinh tế'];
+  HinhThucDaoTao: string[] = ['Chính Quy', 'Văn bằng 2', 'Văn bằng 2 chất lượng cao', 'Văn bằng 2 liên thông', 'Tại chức', 'Từ xa'];
 
 
   constructor(

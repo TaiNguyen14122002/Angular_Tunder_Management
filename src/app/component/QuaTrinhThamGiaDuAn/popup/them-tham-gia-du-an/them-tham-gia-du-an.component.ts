@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, AbstractControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
@@ -28,6 +28,7 @@ export class ThemThamGiaDuAnComponent implements OnInit {
   empForm: FormGroup;
   closemessage = 'closed using directive'
   selectedFileBase64: string | null = null;
+  minEndDate: Date | null = null;
 
 
   constructor(
@@ -39,10 +40,10 @@ export class ThemThamGiaDuAnComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.empForm = this._fb.group({
-      TuNgay: '',
-      DenNgay: '',
-      SanPhamCNTT: '',
-      MoTa: '',
+      TuNgay: ['', Validators.required],
+      DenNgay: ['', Validators.required],
+      SanPhamCNTT: ['', Validators.required],
+      MoTa: ['', Validators.required],
       action: 1
     })
 
@@ -91,6 +92,34 @@ export class ThemThamGiaDuAnComponent implements OnInit {
       this.inputdata = { title: 'Thêm Trình Độ Học Vấn' }; // Thêm title khi không có data
     }
 
+    this.empForm.get('TuNgay')?.valueChanges.subscribe(() => {
+      this.minEndDate = this.empForm.get('TuNgay')?.value;
+      this.empForm.get('DenNgay')?.updateValueAndValidity();
+      this.empForm.get('NgayCapChungChi')?.updateValueAndValidity();
+    });
+
+  }
+
+  //Chon DenNgay phai Lon hon TuNgay
+  dateRangeValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const fromDate = this.empForm.get('TuNgay')?.value;
+    const toDate = control.value;
+    if (fromDate && toDate && new Date(toDate) < new Date(fromDate)) {
+      return { dateRange: true };
+    }
+    return null;
+  }
+
+  onStartDateChange(event: any) {
+    this.minEndDate = event.value;
+    this.empForm.get('DenNgay')?.updateValueAndValidity();
+  }
+
+  endDateFilter = (d: Date | null): boolean => {
+    if (!d || !this.minEndDate) {
+      return true;
+    }
+    return d >= this.minEndDate;
   }
 
   

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class DaoTaoNoiBoService {
 
   
-  private apiUrl = ' https://974ef8e41625c685db6795abea8f451d.serveo.net/QuaTrinhDaoTaoNoiBo';
+  private apiUrl = ' http://localhost:3000/QuaTrinhDaoTaoNoiBo';
   private currentId: number; // Khởi tạo ID bắt đầu từ 1
 
   constructor(private _http: HttpClient) {
@@ -27,7 +27,7 @@ export class DaoTaoNoiBoService {
 
   addQuaTrinhDaoTaoNoiBo(data:any): Observable<any>{
     data.id = this.getNextId(); // Gán ID tự động tăng
-    return this._http.post(' https://974ef8e41625c685db6795abea8f451d.serveo.net/QuaTrinhDaoTaoNoiBo', data);
+    return this._http.post(' http://localhost:3000/QuaTrinhDaoTaoNoiBo', data);
   }
 
 

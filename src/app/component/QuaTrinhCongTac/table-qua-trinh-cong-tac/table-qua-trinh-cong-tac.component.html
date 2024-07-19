@@ -1,8 +1,12 @@
 <mat-card style="margin-top: 30px;">
+    <button style="margin-bottom: 40px;
+        background-color: #3092cd;
+        width: 15%;
+        margin-top: 20px;
+        margin-left: 20px;
+        color: antiquewhite;" (click)="addcustomer()" mat-raised-button>Thêm quá trình công tác</button>
     <mat-card-content>
-        <button style="margin-left: 80%; margin-bottom: 20px;" (click)="addcustomer()" mat-raised-button
-            color="primary">Thêm quá trình công tác
-            (+)</button>
+
 
 
 
@@ -44,10 +48,10 @@
 
             <ng-container matColumnDef="TrongNganh">
                 <th mat-sort-header mat-header-cell *matHeaderCellDef> Trong ngành</th>
-                <td mat-cell *matCellDef="let element"><mat-checkbox [(ngModel)]="element.TrongNganh"
-                        [disabled]="true" class="example-margin"></mat-checkbox></td>
+                <td mat-cell *matCellDef="let element"><mat-checkbox [(ngModel)]="element.TrongNganh" [disabled]="true"
+                        class="example-margin"></mat-checkbox></td>
             </ng-container>
-<!-- 
+            <!-- 
             <ng-container matColumnDef="TrongNganh">
                 <th mat-sort-header mat-header-cell *matHeaderCellDef> Trong ngành</th>
                 <td mat-cell *matCellDef="let element"><mat-checkbox [checked]="true"

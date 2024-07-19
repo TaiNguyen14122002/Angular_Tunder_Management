@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
@@ -11,12 +11,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
-import { Subject } from 'rxjs'; // Import Subject from RxJS
 
 
 
 import { HttpClient } from '@angular/common/http';
 import { TrinhDoHocVanService } from '../../services/trinh-do-hoc-van.service';
+
+import { ReplaySubject, Subject } from 'rxjs';
+import { take, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cap-nhap',
@@ -29,6 +31,22 @@ export class CapNhapComponent {
   empForm: FormGroup;
   closemessage = 'closed using directive'
   selectedFileName: string | null = null;
+  minEndDate: Date | null = null;
+  searchOptionsLoaiLinhVuc: FormControl = new FormControl();
+  searchOptionsChuyenNganh: FormControl = new FormControl();
+  searchOptionsNganhDaoTao: FormControl = new FormControl();
+  searchOptionsHinhThucDaoTao: FormControl = new FormControl();
+  fillteredOptionsLoaiLinhVuc: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
+  fillteredOptionsChuyenNganh: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
+  fillteredOptionsNganhDaoTao: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
+  filleredOptionsHinThucDaoTao: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
+
+  protected _onDestroy = new Subject<void>();
+
+  LoaiLinhVuc: string[] = ['Cao đẳng', 'Đại học', 'Thạc sĩ', 'Tiến sĩ'];
+  ChuyenNganh: string[] = ['Khoa học Máy tính', 'Kỹ thuật phần mềm', 'An toàn thông tin', 'Mạng máy tính', 'Công nghệ thông tin', 'Quản trị Kinh doanh', 'Kinh tế'];
+  NganhDaoTao: string[] = ['Công nghệ thông tin', 'Kinh tế', 'Quản trị Kinh doanh', 'Ngôn ngữ Anh', 'Khoa học Máy tính', 'Kỹ thuật phần mềm', 'Kinh tế'];
+  HinhThucDaoTao: string[] = ['Chính Quy', 'Văn bằng 2', 'Văn bằng 2 chất lượng cao', 'Văn bằng 2 liên thông', 'Tại chức', 'Từ xa'];
   
 
 
@@ -92,14 +110,64 @@ export class CapNhapComponent {
   }
 
   ngOnInit(): void {
-    if (this.data) {
-      this.empForm.patchValue(this.data);
-      this.inputdata = { title: 'Cập nhập Trình Độ Học Vấn' }; // Cập nhập title khi có data
-      this.selectedFileName = this.getFileName(this.data.fileBase64);
-    } else {
-      this.inputdata = { title: 'Thêm Trình Độ Học Vấn' }; // Thêm title khi không có data
-    }
+    console.log(this.data);
+    this.empForm.patchValue(this.data)
 
+    this.empForm.get('TuNgay')?.valueChanges.subscribe(() => {
+      this.minEndDate = this.empForm.get('TuNgay')?.value;
+      this.empForm.get('DenNgay')?.updateValueAndValidity();
+    });
+
+    this.searchOptionsLoaiLinhVuc.valueChanges.pipe(takeUntil(this._onDestroy)).subscribe(() => {
+      this.FilterOptionsLoaiLinhVuc();
+    });
+
+    this.searchOptionsChuyenNganh.valueChanges.pipe(takeUntil(this._onDestroy)).subscribe(() => {
+      this.FilterOptionsChuyenNganh();
+    })
+
+    this.searchOptionsNganhDaoTao.valueChanges.pipe(takeUntil(this._onDestroy)).subscribe(() => {
+      this.FilterOptionsNganhDaoTao();
+    })
+
+    this.searchOptionsHinhThucDaoTao.valueChanges.pipe(takeUntil(this._onDestroy)).subscribe(() => {
+      this.FilterOptionsHinhThucDaoTao();
+    })
+    console.log("tai",this.data)
+
+    // Gọi API để lấy dữ liệu và gán vào form
+  this._empService.getTrinhDoHocVan().subscribe(data => {
+    console.log('Dữ liệu từ API:', data);
+  
+
+    this.fillteredOptionsLoaiLinhVuc.next(this.LoaiLinhVuc.slice());
+    this.fillteredOptionsChuyenNganh.next(this.ChuyenNganh.slice());
+    this.fillteredOptionsNganhDaoTao.next(this.NganhDaoTao.slice());
+    this.filleredOptionsHinThucDaoTao.next(this.HinhThucDaoTao.slice());
+  });
+
+  }
+
+  //Chon DenNgay phai Lon hon TuNgay
+  dateRangeValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const fromDate = this.empForm.get('TuNgay')?.value;
+    const toDate = control.value;
+    if (fromDate && toDate && new Date(toDate) < new Date(fromDate)) {
+      return { dateRange: true };
+    }
+    return null;
+  }
+
+  onStartDateChange(event: any) {
+    this.minEndDate = event.value;
+    this.empForm.get('DenNgay')?.updateValueAndValidity();
+  }
+
+  endDateFilter = (d: Date | null): boolean => {
+    if (!d || !this.minEndDate) {
+      return true;
+    }
+    return d >= this.minEndDate;
   }
 
   
@@ -129,5 +197,33 @@ export class CapNhapComponent {
     phone: this.buildr.control(''),
     status: this.buildr.control(true)
   });
+
+  private FilterOptionsLoaiLinhVuc() {
+    const search = this.searchOptionsLoaiLinhVuc.value ? this.searchOptionsLoaiLinhVuc.value.toLowerCase() : '';
+    this.fillteredOptionsLoaiLinhVuc.next(
+      this.LoaiLinhVuc.filter(option => option.toLowerCase().includes(search))
+    );
+  }
+  
+  private FilterOptionsChuyenNganh() {
+    const search = this.searchOptionsChuyenNganh.value ? this.searchOptionsChuyenNganh.value.toLowerCase() : '';
+    this.fillteredOptionsChuyenNganh.next(
+      this.ChuyenNganh.filter(option => option.toLowerCase().includes(search))
+    );
+  }
+
+  private FilterOptionsNganhDaoTao() {
+    const search = this.searchOptionsNganhDaoTao.value ? this.searchOptionsNganhDaoTao.value.toLowerCase() : '';
+    this.fillteredOptionsNganhDaoTao.next(
+      this.NganhDaoTao.filter(option => option.toLowerCase().includes(search))
+    );
+  }
+  
+  private FilterOptionsHinhThucDaoTao() {
+    const search = this.searchOptionsHinhThucDaoTao.value ? this.searchOptionsHinhThucDaoTao.value.toLowerCase() : '';
+    this.filleredOptionsHinThucDaoTao.next(
+      this.HinhThucDaoTao.filter(option => option.toLowerCase().includes(search))
+    );
+  }
 
 }

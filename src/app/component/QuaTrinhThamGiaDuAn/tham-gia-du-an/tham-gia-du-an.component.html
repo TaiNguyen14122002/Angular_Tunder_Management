@@ -1,12 +1,16 @@
 <mat-card style="margin-top: 30px;">
+    <button style="margin-bottom: 40px;
+        background-color: #3092cd;
+        width: 15%;
+        margin-top: 20px;
+        margin-left: 20px;
+        color: antiquewhite;" (click)="addcustomer()" mat-raised-button>Thêm quá trình tham gia</button>
     <mat-card-content>
-        <button style="margin-left: 80%; margin-bottom: 20px;" (click)="addcustomer()" mat-raised-button
-            color="primary">Thêm quá trình tham gia dự án
-            (+)</button>
 
 
 
-        <table matSort  mat-table [dataSource]="dataSource" class="mat-elevation-z11">
+
+        <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z11">
 
             <ng-container matColumnDef="STT">
                 <th mat-sort-header mat-header-cell *matHeaderCellDef> STT</th>
@@ -42,7 +46,8 @@
                         <button mat-menu-item (click)="openEditForm(element)"><mat-icon>edit</mat-icon>Sửa thông
                             tin</button>
                         <button mat-menu-item (click)="OpenDetails(element)"><mat-icon>info</mat-icon>Chi tiết</button>
-                        <button mat-menu-item (click)="deleteQuaTrinhThamGiaDuAn(element.id)"><mat-icon>delete</mat-icon>Xoá
+                        <button mat-menu-item
+                            (click)="deleteQuaTrinhThamGiaDuAn(element.id)"><mat-icon>delete</mat-icon>Xoá
                             thông tin</button>
                     </mat-menu>
                 </td>
@@ -60,7 +65,7 @@
         </table>
 
     </mat-card-content>
-   
+
     <br>
     <mat-card-footer>
 

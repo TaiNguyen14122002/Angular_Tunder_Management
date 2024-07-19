@@ -168,7 +168,7 @@ export class ThemChungNhanComponent implements OnInit {
 
     this.filteredOptions.next(this.diaDiemDaoTaoOptions.slice());
     this.filteredOptionsKetQua.next(this.KetQuaXepLoaiOptions.slice());
-    this.FilteredOptionsLinhVuc.next(this.KetQuaXepLoaiOptions.slice());
+    this.FilteredOptionsLinhVuc.next(this.LinhVucChungChiOptions.slice());
     this.FillteredOptionsLoaiLinhVuc.next(this.LoaiLinhVucOptions.slice());
 
   }

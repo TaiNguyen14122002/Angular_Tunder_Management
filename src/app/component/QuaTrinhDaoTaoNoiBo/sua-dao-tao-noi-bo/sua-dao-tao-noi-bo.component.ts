@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, AbstractControl, FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
@@ -16,6 +16,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { HttpClient } from '@angular/common/http';
 
+import { takeUntil } from 'rxjs/operators';
+import { ReplaySubject, Subject } from 'rxjs';
+
 import { DaoTaoNoiBoService } from '../dao-tao-noi-bo.service';
 
 @Component({
@@ -31,6 +34,27 @@ export class SuaDaoTaoNoiBoComponent {
   empForm: FormGroup;
   closemessage = 'closed using directive'
   selectedFileBase64: string | null = null;
+
+  minEndDate: Date | null = null;
+
+
+  searchOptionsDonViDaoTaoNoiBo: FormControl = new FormControl();
+  fillteredDonViDaoTaoNoiBo: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
+  protected _onDestroy = new Subject<void>();
+
+
+  diaDiemDaoTaoOptions: string[] = [
+    "Đại học Quốc gia Hà Nội",
+    "Đại học Bách khoa Hà Nội",
+    "Đại học Kinh tế Quốc dân",
+    "Đại học Sư phạm Hà Nội",
+    "Đại học Bách khoa TP.HCM",
+    "Đại học Khoa học Tự nhiên TP.HCM",
+    "Đại học Ngoại thương",
+    "Đại học Y Hà Nội",
+    "Đại học Y Dược Hà Nội",
+    "Đại học Sân khấu Điện ảnh"
+  ];
 
 
   constructor(
@@ -79,10 +103,54 @@ export class SuaDaoTaoNoiBoComponent {
     if (this.data) {
       this.empForm.patchValue(this.data);
       this.inputdata = { title: 'Cập nhập Trình Độ Học Vấn' }; // Cập nhập title khi có data
+
+      // Lọc tùy chọn khi tìm kiếm
+    this.searchOptionsDonViDaoTaoNoiBo.valueChanges.pipe(takeUntil(this._onDestroy)).subscribe(() => {
+      this.filterOptions();
+    });
+
+    this.fillteredDonViDaoTaoNoiBo.next(this.diaDiemDaoTaoOptions.slice());
     } else {
       this.inputdata = { title: 'Thêm Trình Độ Học Vấn' }; // Thêm title khi không có data
     }
 
+    this.empForm.get('TuNgay')?.valueChanges.subscribe(() => {
+      this.minEndDate = this.empForm.get('TuNgay')?.value;
+      this.empForm.get('DenNgay')?.updateValueAndValidity();
+      this.empForm.get('NgayCapChungChi')?.updateValueAndValidity();
+    });
+
+  }
+
+
+  //Chon DenNgay phai Lon hon TuNgay
+  dateRangeValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const fromDate = this.empForm.get('TuNgay')?.value;
+    const toDate = control.value;
+    if (fromDate && toDate && new Date(toDate) < new Date(fromDate)) {
+      return { dateRange: true };
+    }
+    return null;
+  }
+
+  onStartDateChange(event: any) {
+    this.minEndDate = event.value;
+    this.empForm.get('DenNgay')?.updateValueAndValidity();
+  }
+
+  endDateFilter = (d: Date | null): boolean => {
+    if (!d || !this.minEndDate) {
+      return true;
+    }
+    return d >= this.minEndDate;
+  }
+
+  //Loc tim kiem Dia Diem Dao Tao
+  private filterOptions() {
+    const search = this.searchOptionsDonViDaoTaoNoiBo.value ? this.searchOptionsDonViDaoTaoNoiBo.value.toLowerCase() : '';
+    this.fillteredDonViDaoTaoNoiBo.next(
+      this.diaDiemDaoTaoOptions.filter(option => option.toLowerCase().includes(search))
+    );
   }
 
   

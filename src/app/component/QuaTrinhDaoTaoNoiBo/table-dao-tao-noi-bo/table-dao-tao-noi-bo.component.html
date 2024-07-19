@@ -1,8 +1,12 @@
 <mat-card style="margin-top: 30px;">
+    <button style="margin-bottom: 40px;
+        background-color: #3092cd;
+        width: 15%;
+        margin-top: 20px;
+        margin-left: 20px;
+        color: antiquewhite;" (click)="addcustomer()" mat-raised-button>Thêm quá trình đào tạo</button>
     <mat-card-content>
-        <button style="margin-left: 80%; margin-bottom: 20px;" (click)="addcustomer()" mat-raised-button
-            color="primary">Thêm quá trình công tác
-            (+)</button>
+
 
 
 
@@ -55,7 +59,8 @@
                         <button mat-menu-item (click)="openEditForm(element)"><mat-icon>edit</mat-icon>Sửa thông
                             tin</button>
                         <button mat-menu-item (click)="OpenDetails(element)"><mat-icon>info</mat-icon>Chi tiết</button>
-                        <button mat-menu-item (click)="deleteQuaTrinhDaoTaoNoiBo(element.id)"><mat-icon>delete</mat-icon>Xoá
+                        <button mat-menu-item
+                            (click)="deleteQuaTrinhDaoTaoNoiBo(element.id)"><mat-icon>delete</mat-icon>Xoá
                             thông tin</button>
                     </mat-menu>
                 </td>
@@ -70,7 +75,7 @@
                     Không có dữ liệu
                 </td>
             </tr>
-            
+
         </table>
 
     </mat-card-content>

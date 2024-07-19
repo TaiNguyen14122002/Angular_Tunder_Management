@@ -1,58 +1,70 @@
-<form [formGroup]="empForm" (ngSubmit)="onFromSubmit()">
-    <h1 mat-dialog-title>Cập nhập quá trình công tác</h1>
 
+<form style="width: 100%;" [formGroup]="empForm" (ngSubmit)="onFromSubmit()">
+    <h1 mat-dialog-title style="background-color: #3092cd; text-align: center; color: aliceblue;">Thêm quá trình tham gia dự án</h1>
+  
     <div mat-dialog-content>
+      <div class="date-range-container">
+        <div class="form-row">
+          <div class="example-form-field">
+            <label>Ngày tạo*</label>
+            <mat-form-field>
+              <mat-label>Từ ngày</mat-label>
+              <input matInput [matDatepicker]="startDatePicker" formControlName="TuNgay" />
+              <mat-hint>DD/MM/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #startDatePicker></mat-datepicker>
+              <mat-error *ngIf="empForm.get('TuNgay')?.hasError('required')">
+                Vui lòng chọn ngày tạo
+              </mat-error>
+            </mat-form-field>
+          </div>
+  
+          <div class="example-form-field">
+            <label>Ngày tạo*</label>
+            <mat-form-field>
+              <mat-label>Đến ngày</mat-label>
+              <input matInput [matDatepicker]="endDatePicker" formControlName="DenNgay"
+                [matDatepickerFilter]="endDateFilter" />
+              <mat-hint>DD/MM/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #endDatePicker></mat-datepicker>
+              <mat-error *ngIf="empForm.get('DenNgay')?.hasError('required')">
+                Vui lòng chọn ngày hết hạn
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div style="width: 98%;">
+          <label>Sản phẩm công nghệ thông tin</label>
+          <mat-form-field>
+            <input matInput #message maxlength="250" formControlName="SanPhamCNTT" placeholder="Nhập tên nhân viên ...">
+            <mat-error *ngIf="empForm.get('SanPhamCNTT')?.hasError('required')">
+              Vui lòng nhập tên sản phẩm công nghệ thông tin
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
 
-        <mat-form-field class="example-form-field">
-            <mat-label>Thời gian(Từ ngày)*</mat-label>
-            <input matInput [matDatepicker]="startDatePicker" formControlName="TuNgay" />
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
-            <mat-datepicker #startDatePicker>
-                <mat-datepicker-actions>
-                    <button mat-button matDatepickerCancel>Trở về</button>
-                    <button mat-raised-button matDatepickerApply>Chọn</button>
-                </mat-datepicker-actions>
-            </mat-datepicker>
-        </mat-form-field>
-
-        <mat-form-field class="example-form-field">
-            <mat-label>Thời gian(Đến ngày)*</mat-label>
-            <input matInput [matDatepicker]="endDatePicker" formControlName="DenNgay" />
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
-            <mat-datepicker #endDatePicker>
-                <mat-datepicker-actions>
-                    <button mat-button matDatepickerCancel>Trở về</button>
-                    <button mat-raised-button matDatepickerApply>Chọn</button>
-                </mat-datepicker-actions>
-            </mat-datepicker>
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-            <mat-label>Sản phẩm CNTT</mat-label>
-            <input matInput #message maxlength="256" formControlName="SanPhamCNTT" placeholder="Sản phẩm CNTT ...">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-            <mat-label>Mô tả</mat-label>
-            <input matInput #message maxlength="256" formControlName="MoTa" placeholder="Mô tả ...">
-        </mat-form-field>
-
-
-
-
-        <!--       
-      <div>
-        <input type="file" formControlName="FileDinhKem" (change)="onFileSelect($event)" accept=".pdf"/>
-      </div> -->
-
-
+      <div class="form-row">
+        <div style="width: 98%;">
+          <label>Mô tả sản phẩm công nghệ thông tin</label>
+          <mat-form-field>
+            <input matInput #message maxlength="1000" formControlName="MoTa" placeholder="Nhập tên nhân viên ...">
+            <mat-error *ngIf="empForm.get('MoTa')?.hasError('required')">
+              Vui lòng nhập mô tả sản phẩm công nghệ thông tin
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
     </div>
-
+  
     <div mat-dialog-actions>
-        <button mat-raised-button type="submit" color="primary">Cập nhập</button>
-        <a (click)="closepopup()" mat-raised-button color="warn" [mat-dialog-close]="false" type="button">Trở lại</a>
-        <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
+      <button mat-raised-button type="submit"
+        style="background-color: #3092cd; text-align: center; color: aliceblue;">Thêm</button>
+      <a (click)="closepopup()" mat-raised-button color="#3093cd" [mat-dialog-close]="false" type="button">Trở lại</a>
+      <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
     </div>
-</form>
+  </form>

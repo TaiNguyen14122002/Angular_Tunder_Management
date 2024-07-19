@@ -1,81 +1,12 @@
 <mat-card>
-  <!-- <mat-card-header style="margin-bottom: 20px;">
-    <div style="display: flex; width: 100%;">
-
-      <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <mat-label>Nhập thông tin tìm kiếm ...</mat-label>
-          <input matInput #message maxlength="256" placeholder="">
-          <mat-hint>{{message.value.length}} / 256</mat-hint>
-        </mat-form-field>
-      </form>
-
-      <mat-form-field class="example-form-field" style="margin-left: 20px;">
-        <mat-label>Ngày tạo(Từ ngày)</mat-label>
-        <input matInput [matDatepicker]="datepicker" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
-        <mat-datepicker #datepicker>
-          <mat-datepicker-actions>
-            <button mat-button matDatepickerCancel>Cancel</button>
-            <button mat-raised-button matDatepickerApply>Apply</button>
-          </mat-datepicker-actions>
-        </mat-datepicker>
-      </mat-form-field>
-
-      <mat-form-field class="example-form-field" style="margin-left: 20px;">
-        <mat-label>Ngày tạo(Đến ngày)</mat-label>
-        <input matInput [matDatepicker]="datepicker" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
-        <mat-datepicker #datepicker>
-          <mat-datepicker-actions>
-            <button mat-button matDatepickerCancel>Cancel</button>
-            <button mat-raised-button matDatepickerApply>Apply</button>
-          </mat-datepicker-actions>
-        </mat-datepicker>
-      </mat-form-field>
-    </div>
-
-
-    <div style="margin-left: 20px;">
-      <mat-form-field>
-        <mat-label>Khách hàng</mat-label>
-        <select matNativeControl required>
-          <option value="All">Tất cả</option>
-        </select>
-      </mat-form-field>
-    </div>
-    
-
-
-
-  </mat-card-header> -->
-
-  
-
+  <button style="margin-bottom: 40px;
+  background-color: #3092cd;
+  width: 15%;
+  margin-top: 20px;
+  margin-left: 20px;
+  color: antiquewhite;" (click)="addcustomer()" mat-raised-button>Thêm trình độ học vấn</button>
   <mat-card-content>
-    <!-- <section style="display: flex;">
-      <div class="example-button-row" style="display: flex;">
-        <div class="example-flex-container" style="display: flex;">
-          <div class="example-button-container">
-            <button mat-fab extended>
-              <mat-icon>search</mat-icon>
-              Tìm kiếm
-            </button>
-          </div>
-          <div class="example-button-container">
-            <a mat-fab extended routerLink=".">
-              <mat-icon>settings_backup_restore</mat-icon>
-              Thiết lập lại
-            </a>
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <button style="margin-left: 80%; margin-bottom: 20px;" (click)="addcustomer()" mat-raised-button
-      color="primary">Thêm trình độ học vấn
-      (+)</button>
+
 
 
 
@@ -129,14 +60,10 @@
           <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="openEditForm(element)"><mat-icon>edit</mat-icon>Sửa thông tin</button>
             <button mat-menu-item (click)="OpenDetail(element)"><mat-icon>edit</mat-icon>Chi tiết</button>
-            <button mat-menu-item (click)="deleteTrinhDoHocVan(element.id)"><mat-icon>delete</mat-icon>Xoá thông tin</button>
-            <!-- <button mat-menu-item (click)="detailcustomer(element.id)"><mat-icon>visibility</mat-icon>Xem chi
-              tiết</button> -->
+            <button mat-menu-item (click)="deleteTrinhDoHocVan(element.id)"><mat-icon>delete</mat-icon>Xoá thông
+              tin</button>
           </mat-menu>
 
-          <!-- <button (click)="editcustomer(element.id)" mat-raised-button color="primary">Edit</button>
-          <button mat-raised-button color="warn">Delete</button>
-          <button (click)="detailcustomer(element.id)" mat-raised-button color="primary">Detail</button> -->
         </td>
       </ng-container>
 
@@ -145,15 +72,15 @@
       <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
 
       <!-- Hàng hiển thị khi không có dữ liệu -->
-    <tr *matNoDataRow>
-      <td class="mat-cell" colspan="displayedColumns.length">Không có dữ liệu</td>
-    </tr>
+      <tr *matNoDataRow>
+        <td class="mat-cell" colspan="displayedColumns.length">Không có dữ liệu</td>
+      </tr>
 
-    <tr *matNoDataRow>
-      <td class="mat-cell" [attr.colspan]="displayedColumns.length" style="text-align: center;">
+      <tr *matNoDataRow>
+        <td class="mat-cell" [attr.colspan]="displayedColumns.length" style="text-align: center;">
           Không có dữ liệu
-      </td>
-  </tr>
+        </td>
+      </tr>
 
     </table>
 

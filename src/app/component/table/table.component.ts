@@ -22,92 +22,7 @@ import { ChiTietTrinhDoHVComponent } from '../popup/chi-tiet-trinh-do-hv/chi-tie
 })
 export class TableComponent implements OnInit {
 
-
-  // customerlist : any[]=[
-  //   {
-  //     id: 1,
-  //     TuNgay: '2023-01-01',
-  //     DenNgay: '2023-12-31',
-  //     TrinhDoDaoTao: 'Đại học',
-  //     ChuyenNganhDaoTao: 'Công nghệ thông tin',
-  //     NganhDaoTao: 'Công nghệ thông tin',
-  //     HinhThucDaoTao: 'Chính quy',
-  //     CoSoDaoTao: 'Đại học Thủ Dầu Một'
-  //   },
-  //   {
-  //     id: 2,
-  //     TuNgay: '2023-01-01',
-  //     DenNgay: '2023-12-31',
-  //     TrinhDoDaoTao: 'Đại học',
-  //     ChuyenNganhDaoTao: 'Công nghệ thông tin',
-  //     NganhDaoTao: 'Công nghệ thông tin',
-  //     HinhThucDaoTao: 'Chính quy',
-  //     CoSoDaoTao: 'Đại học Thủ Dầu Một'
-  //   },
-  //   {
-  //     id: 3,
-  //     TuNgay: '2023-01-01',
-  //     DenNgay: '2023-12-31',
-  //     TrinhDoDaoTao: 'Đại học',
-  //     ChuyenNganhDaoTao: 'Công nghệ thông tin',
-  //     NganhDaoTao: 'Công nghệ thông tin',
-  //     HinhThucDaoTao: 'Chính quy',
-  //     CoSoDaoTao: 'Đại học Thủ Dầu Một'
-  //   },
-  //   {
-  //     id: 4,
-  //     TuNgay: '2023-01-01',
-  //     DenNgay: '2023-12-31',
-  //     TrinhDoDaoTao: 'Đại học',
-  //     ChuyenNganhDaoTao: 'Công nghệ thông tin',
-  //     NganhDaoTao: 'Công nghệ thông tin',
-  //     HinhThucDaoTao: 'Chính quy',
-  //     CoSoDaoTao: 'Đại học Thủ Dầu Một'
-  //   },
-  //   {
-  //     id: 5,
-  //     TuNgay: '2023-01-01',
-  //     DenNgay: '2023-12-31',
-  //     TrinhDoDaoTao: 'Đại học',
-  //     ChuyenNganhDaoTao: 'Công nghệ thông tin',
-  //     NganhDaoTao: 'Công nghệ thông tin',
-  //     HinhThucDaoTao: 'Chính quy',
-  //     CoSoDaoTao: 'Đại học Thủ Dầu Một'
-  //   },
-  //   {
-  //     id: 6,
-  //     TuNgay: '2023-01-01',
-  //     DenNgay: '2023-12-31',
-  //     TrinhDoDaoTao: 'Đại học',
-  //     ChuyenNganhDaoTao: 'Công nghệ thông tin',
-  //     NganhDaoTao: 'Công nghệ thông tin',
-  //     HinhThucDaoTao: 'Chính quy',
-  //     CoSoDaoTao: 'Đại học Thủ Dầu Một'
-  //   },
-  //   {
-  //     id: 7,
-  //     TuNgay: '2023-01-01',
-  //     DenNgay: '2023-12-31',
-  //     TrinhDoDaoTao: 'Đại học',
-  //     ChuyenNganhDaoTao: 'Công nghệ thông tin',
-  //     NganhDaoTao: 'Công nghệ thông tin',
-  //     HinhThucDaoTao: 'Chính quy',
-  //     CoSoDaoTao: 'Đại học Thủ Dầu Một'
-  //   },
-  //   {
-  //     id: 8,
-  //     TuNgay: '2023-01-01',
-  //     DenNgay: '2023-12-31',
-  //     TrinhDoDaoTao: 'Đại học',
-  //     ChuyenNganhDaoTao: 'Công nghệ thông tin',
-  //     NganhDaoTao: 'Công nghệ thông tin',
-  //     HinhThucDaoTao: 'Chính quy',
-  //     CoSoDaoTao: 'Đại học Thủ Dầu Một'
-  //   },
-    
-  // ];
   dataSource!: MatTableDataSource<any>;
-  // displayedColumns: string[] = ["STT", "name", "email", "phone", "status", "action"];
   displayedColumns: string[] = ["STT", "TuNgay", "DenNgay", "TrinhDoDaoTao", "ChuyenNganhDaoTao", "NganhDaoTao", "HinhThucDaoTao", "CoSoDaoTao", "action"];
   @ViewChild(MatPaginator) paginatior !: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort;
@@ -179,43 +94,11 @@ export class TableComponent implements OnInit {
     })
   }
 
-  // deleteTrinhDoHocVan(id: number) {
-  //   console.log(`Deleting ID: ${id}`);
-  //   this._empService.deleteTrinhDoHocVan(id).subscribe({
-  //     next: () => {
-  //       console.log(`Deleted ID: ${id}`);
-  //       this.dataSource.data = this.dataSource.data.filter(item => item.id !== id);
-  //     },
-  //     error: (err) => {
-  //       console.log(`Error deleting ID: ${id}`, err);
-  //     }
-  //   });
-  // }
-
-
-  // loadcustomer() {
-  //   this.service.GetCustomer().subscribe(res => {
-  //     this.customerlist = res;
-  //     this.dataSource = new MatTableDataSource<Customer>(this.customerlist);
-  //     this.dataSource.paginator = this.paginatior;
-  //     this.dataSource.sort = this.sort;
-  //   });
-  // }
-
+  
   Filterchange(data: Event) {
     const value = (data.target as HTMLInputElement).value;
     this.dataSource.filter = value;
   }
-
-  // detailcustomer(STT: any) {
-  //   this.Openpopup(STT, 'Chi tiết trình độ học vấn',UserdetailComponent);
-  // }
-  // detailcustomer(id: any) {
-  //   const customer = this.customerlist.find(c => c.id === id);
-  //   if (customer) {
-  //     this.Openpopup(id, 'Chi tiết trình độ học vấn', UserdetailComponent);
-  //   }
-  // }
 
   
 
@@ -232,10 +115,7 @@ export class TableComponent implements OnInit {
         STT: STT
       }
     });
-    // _popup.afterClosed().subscribe(item => {
-    //   // console.log(item)
-    //   this.loadcustomer();
-    // })
+    
   }
 
   
