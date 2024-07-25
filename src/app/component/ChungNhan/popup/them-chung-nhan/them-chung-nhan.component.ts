@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl, FormArray } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
@@ -29,6 +29,8 @@ export class ThemChungNhanComponent implements OnInit {
   inputdata: any = { title: '' };
   editdata: any;
   empForm: FormGroup;
+  fileNames: string[] = [];
+  files: File[] = [];
   closemessage = 'closed using directive'
   selectedFileBase64: string | null = null;
   minEndDate: Date | null = null;
@@ -108,7 +110,7 @@ export class ThemChungNhanComponent implements OnInit {
       LinhVucChungChi: ['', Validators.required],
       ChungChiQuocTe: [false],
       MucChungChi: ['', Validators.required],
-      FileDinhKem: [null],
+      FileDinhKem: [], // Sử dụng FormArray để chứa nhiều file
       CoSoDaoTao: ['', Validators.required],
       DiaDiemDaoTao: ['', Validators.required],
       CuDiHoc: [false],
@@ -135,6 +137,32 @@ export class ThemChungNhanComponent implements OnInit {
       })
     }
   }
+
+  // onFromSubmit() {
+  //   if (this.empForm.valid) {
+  //     const formData = new FormData();
+  //     Object.keys(this.empForm.controls).forEach(key => {
+  //       if (key === 'FileDinhKem') {
+  //         for (let file of this.files) {
+  //           formData.append('FileDinhKem', file);
+  //         }
+  //       } else {
+  //         formData.append(key, this.empForm.get(key)?.value);
+  //       }
+  //     });
+
+  //     this._empService.addChungNhanChungChi(formData).subscribe({
+  //       next: (val: any) => {
+  //         alert('Trình Độ Học Vấn added successfully');
+  //         this.ref.close();
+  //       },
+  //       error: (err: any) => {
+  //         console.error(err);
+  //       }
+  //     });
+  //   }
+  // }
+
   ngOnInit(): void {
     if (this.data) {
       this.empForm.patchValue(this.data);
@@ -173,6 +201,19 @@ export class ThemChungNhanComponent implements OnInit {
 
   }
 
+  get FileDinhKem(): FormArray {
+    return this.empForm.get('FileDinhKem') as FormArray;
+  }
+
+  // onFileChange(event: any) {
+  //   const files = event.target.files;
+  //   this.fileNames = [];  // Reset danh sách fileNames
+  
+  //   for (let i = 0; i < files.length; i++) {
+  //     this.fileNames.push(files[i].name);
+  //   }
+  // }
+
 
 
 
@@ -184,6 +225,16 @@ export class ThemChungNhanComponent implements OnInit {
       });
     }
   }
+  // onFileChange(event: Event) {
+  //   const input = (event.target as HTMLInputElement).files?.[0];
+  //   if (input) {
+  //     this.empForm.patchValue({
+  //       pdfFile: input // Lưu mảng các tệp vào trường pdfFiles của empForm
+  //     });
+  //   }
+  // }
+
+  
 
   closepopup() {
     this.ref.close('Closed using function');
